@@ -1,0 +1,205 @@
+/* Hallmark · macrostructure: Split Studio (marketing) + Long Document (content) · tone: calm, clinical, quietly authoritative · anchor hue: teal 182°
+ * genre: atmospheric · design-system: design.md · designed-as-app · theme: Clinical Midnight (owner's palette, OKLCH)
+ * hues: teal 182° accent · cyan 234° hover + second bloom · type: Plus Jakarta Sans, roman
+ * nav: N5 floating pill · footer: Ft5 statement · enrichment: none, typography and photography only
+ * slop: pass (42–45) · contrast: pass (40–41) · honest: pass (46; figures are the owner's, confirm before launch)
+ * chrome: pass (47) · tokens: pass (48) · icons: pass (30) · responsive: pass (49) · mobile: pass (34, 49, 50–57)
+ */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V5 */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  /* Clinical Midnight: tonal surface scale and the bio-cyan accent */
+  --color-surface-lowest: var(--surface-lowest);
+  --color-surface-low: var(--surface-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-high: var(--surface-high);
+  --color-surface-highest: var(--surface-highest);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-outline: var(--outline);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Clinical Midnight type scale (DESIGN.md). Display and headline-xl have
+   mobile steps; pair them as `text-display-lg-mobile md:text-display-lg`. */
+@theme {
+  --text-display-lg: 3.5rem;
+  --text-display-lg--line-height: 4rem;
+  --text-display-lg--letter-spacing: -0.03em;
+  --text-display-lg--font-weight: 700;
+  --text-display-lg-mobile: 2.25rem;
+  --text-display-lg-mobile--line-height: 2.75rem;
+  --text-display-lg-mobile--letter-spacing: -0.025em;
+  --text-display-lg-mobile--font-weight: 700;
+  --text-headline-xl: 2.5rem;
+  --text-headline-xl--line-height: 3rem;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 600;
+  --text-headline-xl-mobile: 1.75rem;
+  --text-headline-xl-mobile--line-height: 2.25rem;
+  --text-headline-xl-mobile--letter-spacing: -0.015em;
+  --text-headline-xl-mobile--font-weight: 600;
+  --text-headline-lg: 2rem;
+  --text-headline-lg--line-height: 2.5rem;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 600;
+  --text-headline-md: 1.5rem;
+  --text-headline-md--line-height: 2rem;
+  --text-headline-md--letter-spacing: -0.015em;
+  --text-headline-md--font-weight: 600;
+  --text-headline-sm: 1.25rem;
+  --text-headline-sm--line-height: 1.75rem;
+  --text-headline-sm--letter-spacing: -0.01em;
+  --text-headline-sm--font-weight: 600;
+  --text-title-md: 1.125rem;
+  --text-title-md--line-height: 1.625rem;
+  --text-title-md--letter-spacing: -0.005em;
+  --text-title-md--font-weight: 500;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.75rem;
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.5rem;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.25rem;
+  --text-body-sm--letter-spacing: 0.005em;
+  --text-label-lg: 0.875rem;
+  --text-label-lg--line-height: 1.25rem;
+  --text-label-lg--letter-spacing: 0.01em;
+  --text-label-lg--font-weight: 600;
+  --text-label-md: 0.75rem;
+  --text-label-md--line-height: 1rem;
+  --text-label-md--letter-spacing: 0.04em;
+  --text-label-md--font-weight: 600;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 0.875rem;
+  --text-label-sm--letter-spacing: 0.06em;
+  --text-label-sm--font-weight: 600;
+
+  /* Elevation comes from surface lightness. The one shadow is the floating
+     nav pill's: tight and dark, never a coloured halo. */
+  --shadow-float: 0 8px 24px -12px oklch(0% 0 0 / 0.6);
+}
+
+/* Dark only: the site always renders with `class="dark"` on <html>.
+   Values are the owner's Clinical Midnight palette, expressed in OKLCH. */
+:root {
+  color-scheme: dark;
+  --radius: 0.5rem;
+  --background: oklch(18.9% 0.03 268.5);
+  --foreground: oklch(91.6% 0.028 276.8);
+  --card: oklch(24.2% 0.03 269.9);
+  --card-foreground: oklch(91.6% 0.028 276.8);
+  --popover: oklch(22.5% 0.03 269.7);
+  --popover-foreground: oklch(91.6% 0.028 276.8);
+  --primary: oklch(87.2% 0.133 181.9);
+  --primary-foreground: oklch(30.2% 0.054 183.2);
+  --secondary: oklch(28.7% 0.029 270.2);
+  --secondary-foreground: oklch(91.6% 0.028 276.8);
+  --muted: oklch(24.2% 0.03 269.9);
+  --muted-foreground: oklch(82.5% 0.019 175.2);
+  --accent: oklch(28.7% 0.029 270.2);
+  --accent-foreground: oklch(91.6% 0.028 276.8);
+  --destructive: oklch(83.8% 0.089 26.8);
+  --border: oklch(28.7% 0.029 270.2);
+  --input: oklch(39.5% 0.019 176.1);
+  --ring: oklch(87.2% 0.133 181.9);
+  --surface-lowest: oklch(16.7% 0.031 268);
+  --surface-low: oklch(22.5% 0.03 269.7);
+  --surface-container: oklch(24.2% 0.03 269.9);
+  --surface-high: oklch(28.7% 0.029 270.2);
+  --surface-highest: oklch(32.8% 0.029 273.8);
+  --info: oklch(82.1% 0.106 234.3);
+  --info-foreground: oklch(30.9% 0.063 231.7);
+  --outline: oklch(65.3% 0.018 178);
+}
+
+/* The atmospheric canvas: two fixed blooms, teal top-right and cyan
+   bottom-left, rendered once by <AmbientGlow /> in the root layout. */
+@utility canvas-blooms {
+  background-image:
+    radial-gradient(
+      56rem 36rem at 100% 0%,
+      color-mix(in oklch, var(--primary) 9%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      48rem 32rem at 0% 100%,
+      color-mix(in oklch, var(--info) 7%, transparent),
+      transparent 70%
+    );
+}
+
+/* Focus is a 2px accent outline, shown instantly. Outlines survive
+   forced-colors mode, where box-shadow rings vanish, and never move layout
+   (Hallmark gate 39). */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer base {
+  /* The resting outline colour matches the ring, so transition-colors has
+     nothing to fade when focus arrives */
+  * {
+    @apply border-border outline-ring;
+  }
+  /* Hallmark gate 34: never scroll sideways; clip keeps sticky/fixed working */
+  html,
+  body {
+    overflow-x: clip;
+  }
+  html {
+    @apply scroll-pt-28 font-sans;
+  }
+  /* Hallmark gate 51: long words in display type wrap instead of overflowing */
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}

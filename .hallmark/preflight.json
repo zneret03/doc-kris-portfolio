@@ -1,0 +1,17 @@
+{
+  "scanned": "2026-10-22",
+  "note": "Cached Hallmark pre-flight. Re-scan when package.json is newer than this file or on 'refresh pre-flight'.",
+  "framework": "Next.js 16.4.2 App Router (package.json L20) · Tailwind v4 via @theme, no tailwind.config (package.json L40) · shadcn/ui 4.22 on Base UI, style base-nova (L16, L23) · Lucide icons (L19)",
+  "font": "Plus Jakarta Sans via next/font/google (src/app/layout.tsx L2, L16), one family for display and body, roman only",
+  "palette": "OKLCH custom properties in src/app/globals.css :root, mapped through @theme inline; hex mirror for non-CSS consumers in src/config/brand-colors.ts",
+  "motion": "No motion library. tw-animate-css serves shadcn primitives only. Motion-cut project: colour transitions only.",
+  "spacing": "Tailwind default 4-point scale, no custom spacing tokens",
+  "design_md": "design.md at project root (system-managed project; read it before any redesign)",
+  "preserve": ["font stack", "palette", "spacing scale", "routes", "copy intent", "information architecture"],
+  "genre": "atmospheric",
+  "context": {
+    "audience": "Prospective cardiac-surgery patients, their families, and referring physicians",
+    "use_case": "Request a consultation",
+    "tone": "Calm, clinical, quietly authoritative"
+  }
+}
