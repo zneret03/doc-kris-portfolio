@@ -47,7 +47,7 @@ export function physicianJsonLd(): JsonLdObject {
     telephone: site.contact.phone.e164,
     email: site.contact.email,
     address: postalAddress(),
-    medicalSpecialty: ["https://schema.org/Cardiovascular", "https://schema.org/Surgical"],
+    medicalSpecialty: ["https://schema.org/Musculoskeletal"],
     isAcceptingNewPatients: site.availability.acceptingPatients,
     openingHoursSpecification: site.hours.flatMap((row) =>
       "schedule" in row && row.schedule

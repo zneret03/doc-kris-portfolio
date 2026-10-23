@@ -13,8 +13,8 @@ describe("pageMetadata", () => {
     expect(metadata.openGraph).toEqual(
       expect.objectContaining({
         type: "website",
-        siteName: "Dr. Julian Vance, MD, FACS",
-        locale: "en_US",
+        siteName: "Dr. Kris Francisco, MD",
+        locale: "en_PH",
         url: "/about",
         title: "About & Credentials",
       }),
@@ -31,14 +31,14 @@ describe("pageMetadata", () => {
 
   it("can skip the title template and extend Open Graph", () => {
     const metadata = pageMetadata({
-      title: "Dr. Julian Vance, MD, FACS",
+      title: "Dr. Kris Francisco, MD",
       absoluteTitle: true,
       description: "Home.",
       path: "/",
-      openGraph: { type: "profile", firstName: "Julian", lastName: "Vance" },
+      openGraph: { type: "profile", firstName: "Kris", lastName: "Francisco" },
     });
 
-    expect(metadata.title).toEqual({ absolute: "Dr. Julian Vance, MD, FACS" });
-    expect(metadata.openGraph).toEqual(expect.objectContaining({ type: "profile", firstName: "Julian" }));
+    expect(metadata.title).toEqual({ absolute: "Dr. Kris Francisco, MD" });
+    expect(metadata.openGraph).toEqual(expect.objectContaining({ type: "profile", firstName: "Kris" }));
   });
 });

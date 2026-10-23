@@ -9,7 +9,7 @@ import { featuredTestimonial } from "@/features/home/content";
 import { pageMetadata } from "@/features/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: `${doctorFullName} | Cardiothoracic Surgeon in ${site.location.locality}`,
+  title: `${doctorFullName} | Sports Medicine & Orthopaedics in ${site.location.locality}`,
   absoluteTitle: true,
   description: site.description,
   path: "/",

@@ -24,7 +24,7 @@ export function ClinicInfoCards({ className }: { className?: string }) {
   return (
     <section aria-label="Location, hours and access" className={className}>
       <dl className="flex flex-col gap-8">
-        <Detail icon={MapPin} term="Pavilion location">
+        <Detail icon={MapPin} term="Clinic location">
           <span className="text-foreground">{site.location.building}</span>
           <address className="not-italic">
             {formatAddressLines().map((line) => (
@@ -51,10 +51,6 @@ export function ClinicInfoCards({ className }: { className?: string }) {
               {row.label}: {row.value}
             </span>
           ))}
-          <span>
-            <span className="text-foreground">24/7 on-call surgical coverage</span> for urgent case
-            referrals
-          </span>
         </Detail>
         <Detail icon={Accessibility} term="Arrival">
           <span>{accessibilityNote.text}</span>

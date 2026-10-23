@@ -18,25 +18,30 @@ export type OpeningHours = {
 };
 
 export const site = {
-  name: "Dr. Julian Vance, MD, FACS",
+  name: "Dr. Kris Francisco, MD",
   description:
-    "Board-certified cardiothoracic surgeon in New York specializing in minimally invasive valve repair, arterial coronary bypass, aortic reconstruction and preventative cardiology.",
-  locale: "en_US",
+    "Sports medicine, arthritis and orthopaedic care in Iloilo City. Dr. Kris Francisco treats sports injuries, joint pain and bone and muscle problems at Qualimed Healthway Hospital, Mandurriao.",
+  locale: "en_PH",
 
   doctor: {
     honorificPrefix: "Dr.",
-    givenName: "Julian",
-    familyName: "Vance",
-    postNominals: "MD, FACS",
-    initials: "JV",
-    jobTitle: "Cardiothoracic & Vascular Surgeon",
-    specialty: "Cardiothoracic & vascular surgery",
-    board: "Diplomate, American Board of Thoracic Surgery",
-    summary:
-      "Providing advanced minimally invasive and complex cardiothoracic surgical care.",
+    givenName: "Kris",
+    familyName: "Francisco",
+    postNominals: "MD",
+    initials: "KF",
+    jobTitle: "Orthopaedic & Sports Medicine Specialist",
+    specialty: "Sports medicine, arthritis & orthopaedics",
+    /** Board or society membership, e.g. a PBOS diplomate or POA fellowship: still to confirm */
+    board: null as string | null,
+    summary: "Helping Iloilo move better, from sports injuries to arthritic joints.",
     yearsInPractice: 15,
-    /** Path under /public, e.g. "/images/portrait.jpg". Null shows the monogram placeholder. */
-    portrait: null as string | null,
+    /**
+     * Path under /public, e.g. "/images/portrait.jpg". Null shows the monogram placeholder.
+     * Currently a stock sample (Pexels licence) for the doctor to choose a style from; the
+     * others are in /images/portrait-samples/ (clinic-scrubs, studio-plain, relaxed-seated).
+     * Replace with the doctor's own photo before launch.
+     */
+    portrait: "/images/portrait-samples/x-ray-review.jpg" as string | null,
   },
 
   contact: {
@@ -47,39 +52,40 @@ export const site = {
     emergencyNumber: "911",
   },
 
+  // Address and hours from a public clinic directory listing (clinicfinderph.com):
+  // confirm both with the clinic before launch
   location: {
-    name: "St. Jude Cardiovascular Pavilion",
-    building: "Lexington Suite 400",
-    streetAddress: "742 Lexington Ave, Suite 400",
-    locality: "New York",
-    region: "NY",
-    postalCode: "10021",
-    country: "US",
-    entrance: "East Pavilion Concierge Entry",
+    name: "Qualimed Healthway Hospital",
+    building: "Orthopaedic Clinic, 3rd floor",
+    streetAddress: "Donato Pison Ave, Mandurriao",
+    locality: "Iloilo City",
+    region: "Iloilo",
+    postalCode: "5000",
+    country: "PH",
+    entrance: "Ask at the main lobby for the 3rd-floor orthopaedic clinic",
     /** IANA zone used to decide which preferred dates are in the past */
-    timeZone: "America/New_York",
+    timeZone: "Asia/Manila",
   },
 
   hours: [
     {
-      label: "Monday – Thursday",
-      value: "08:00 – 17:00",
-      schedule: {
-        days: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-        opens: "08:00",
-        closes: "17:00",
-      },
+      label: "Tuesday",
+      value: "3:00 – 5:00 PM",
+      schedule: { days: ["Tuesday"], opens: "15:00", closes: "17:00" },
     },
-    { label: "Operative days (Fri)", value: "By schedule" },
-    { label: "Emergency call", value: "24/7 service", highlight: true },
+    {
+      label: "Thursday & Friday",
+      value: "10:00 AM – 12:00 PM",
+      schedule: { days: ["Thursday", "Friday"], opens: "10:00", closes: "12:00" },
+    },
   ] satisfies OpeningHours[],
 
   /** The closing line of every page (Ft5 statement footer) */
-  statement: "Precision in the theater, warmth at the bedside.",
+  statement: "Back on the field, back on your feet.",
 
   availability: {
     acceptingPatients: true,
-    label: "Accepting surgical consultations",
+    label: "Accepting new patients",
   },
 
   /** `short` labels keep the floating nav pill content-sized (≤ 720px) */
@@ -93,10 +99,9 @@ export const site = {
   bookingHref: "/clinic#request-consultation",
 
   practiceAreas: [
-    "Minimally Invasive Valve Repair",
-    "Coronary Artery Bypass (CABG)",
-    "Thoracic Aortic Reconstruction",
-    "Robotic Thoracic Surgery",
+    "Sports Injury Treatment",
+    "Arthritis Care",
+    "Orthopaedic Consultation",
   ],
 
   /** External patient portal. The footer link and header icon only render when set. */

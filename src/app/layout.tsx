@@ -21,7 +21,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: {
-    default: `${doctorFullName} | Cardiothoracic Surgeon in ${site.location.locality}`,
+    default: `${doctorFullName} | Sports Medicine & Orthopaedics in ${site.location.locality}`,
     template: `%s | ${doctorFullName}`,
   },
   description: site.description,

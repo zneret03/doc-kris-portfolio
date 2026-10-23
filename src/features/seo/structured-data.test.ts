@@ -39,14 +39,15 @@ describe("physicianJsonLd", () => {
         url: `${ORIGIN}/`,
         telephone: "+15550192830",
         isAcceptingNewPatients: true,
-        address: expect.objectContaining({ "@type": "PostalAddress", postalCode: "10021" }),
+        address: expect.objectContaining({ "@type": "PostalAddress", postalCode: "5000" }),
       }),
     );
     expect(data.openingHoursSpecification).toEqual([
+      expect.objectContaining({ dayOfWeek: ["https://schema.org/Tuesday"], opens: "15:00", closes: "17:00" }),
       expect.objectContaining({
-        dayOfWeek: expect.arrayContaining(["https://schema.org/Monday", "https://schema.org/Thursday"]),
-        opens: "08:00",
-        closes: "17:00",
+        dayOfWeek: ["https://schema.org/Thursday", "https://schema.org/Friday"],
+        opens: "10:00",
+        closes: "12:00",
       }),
     ]);
   });

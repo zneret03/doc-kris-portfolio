@@ -6,7 +6,7 @@ describe("DoctorPortrait", () => {
   it("shows the monogram placeholder until a portrait is configured", () => {
     render(<DoctorPortrait src={null} sizes="400px" />);
 
-    expect(screen.getByTestId("portrait-placeholder")).toHaveTextContent("JV");
+    expect(screen.getByTestId("portrait-placeholder")).toHaveTextContent("KF");
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
@@ -14,7 +14,7 @@ describe("DoctorPortrait", () => {
     render(<DoctorPortrait src="/images/portrait.jpg" sizes="400px" />);
 
     expect(
-      screen.getByRole("img", { name: "Portrait of Dr. Julian Vance, MD, FACS" }),
+      screen.getByRole("img", { name: "Portrait of Dr. Kris Francisco, MD" }),
     ).toBeInTheDocument();
     expect(screen.queryByTestId("portrait-placeholder")).not.toBeInTheDocument();
   });

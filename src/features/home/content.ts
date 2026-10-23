@@ -5,14 +5,14 @@ import { doctorFullName, site } from "@/config/site";
 const years = site.doctor.yearsInPractice;
 
 export const hero = {
-  title: "Precision cardiac care,",
-  titleContinued: "grounded in empathy",
-  description: `${doctorFullName} — over ${years} years of surgical leadership delivering minimally invasive valve repairs, complex arterial reconstruction, and dedicated patient-first recovery.`,
+  title: "Move freely again,",
+  titleContinued: "on the field and off it",
+  description: `${doctorFullName} treats sports injuries, arthritis and bone, joint and muscle problems in ${site.location.locality}, with care planned around getting you back to the activities you love.`,
   credentials: [
-    { icon: BadgeCheck, label: "ABTS board certified" },
-    { icon: Building2, label: "Metropolitan Heart Pavilion" },
+    { icon: BadgeCheck, label: "Sports medicine & orthopaedics" },
+    { icon: Building2, label: site.location.name },
   ],
-  practice: { label: "Active surgical practice", location: site.location.name },
+  practice: { label: "Orthopaedic clinic", location: site.location.name },
 };
 
 // Sample figures from the mockups: replace with verified numbers or remove
@@ -38,7 +38,7 @@ export const metrics = [
 ];
 
 export const focusIntro =
-  "Surgically conservative, technologically advanced pathways prioritizing minimal tissue disruption and lasting patency.";
+  "Treatment that starts with the least invasive option and is measured by one thing: how well you move afterwards.";
 
 export const focusAreas = [
   {
@@ -81,8 +81,8 @@ export const featuredTestimonial: Testimonial | null = {
 };
 
 export const consultBanner = {
-  title: "Ready to discuss your heart health?",
+  title: "Ready to get moving again?",
   description:
-    "Connect directly with our clinical surgical coordinator for scheduled diagnostic consults, second opinions, or hospital transfers.",
+    "Book a consultation for a sports injury, joint pain or arthritis, or a second opinion before surgery.",
   cta: "Request a consultation",
 };

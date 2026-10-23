@@ -1,14 +1,14 @@
 export const clinicHeader = {
   title: "Clinic facility & consultations",
   subtitle:
-    "World-class cardiothoracic and vascular care in a comfortable, modern clinical setting.",
-  availabilityLabel: "Surgeon availability:",
-  availabilityValue: "accepting new patient referrals",
+    "Sports medicine, arthritis and orthopaedic consultations at Qualimed Healthway Hospital, Iloilo City.",
+  availabilityLabel: "Doctor availability:",
+  availabilityValue: "accepting new patients",
 };
 
 export const accessibilityNote = {
-  text: "Complimentary curbside valet at East Pavilion Entrance with barrier-free, high-capacity elevator access to Suite 400.",
-  highlight: "Direct curbside valet escort",
+  text: "The clinic is on the 3rd floor of Qualimed Healthway Hospital, with lift access from the main lobby.",
+  highlight: "Lift access to the 3rd floor",
 };
 
 // AI-generated samples from the mockups (one shows "Dr Vance" branding):
