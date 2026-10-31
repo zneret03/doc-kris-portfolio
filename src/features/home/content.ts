@@ -5,7 +5,7 @@ import { doctorFullName, site } from "@/config/site";
 export const hero = {
   title: "Move freely again,",
   titleContinued: "on the field and off it",
-  description: `${doctorFullName}, treats sports injuries, arthritis and bone, joint and muscle problems in ${site.location.locality}, with care planned around getting you back to the activities you love.`,
+  description: `${doctorFullName}, is an orthopaedic surgeon in ${site.location.locality} treating sports injuries, arthritis and bone, joint and muscle problems, with care planned around getting you back to the activities you love.`,
   credentials: [
     { icon: BadgeCheck, label: site.doctor.board },
     { icon: Building2, label: site.location.name },

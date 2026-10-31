@@ -1,5 +1,5 @@
 import { Container } from "@/components/container";
-import { doctorName, site } from "@/config/site";
+import { site } from "@/config/site";
 import { AboutCta } from "@/features/about/components/about-cta";
 import { AboutIntro } from "@/features/about/components/about-intro";
 import { AboutPortrait } from "@/features/about/components/about-portrait";
@@ -15,7 +15,7 @@ import { pageMetadata } from "@/features/seo/metadata";
 import { breadcrumbJsonLd, profilePageJsonLd } from "@/features/seo/structured-data";
 
 const title = "About & Credentials";
-const description = `Board certification, fellowship training, hospital affiliations, awards and research of ${doctorName}, ${site.doctor.jobTitle.toLowerCase()} in ${site.location.locality}.`;
+const description = `${site.doctor.legalName}, ${site.doctor.postNominals}, orthopedic surgeon in ${site.location.locality}: board certification, fellowships, hospital affiliations, awards and research.`;
 
 export const metadata = pageMetadata({
   title,

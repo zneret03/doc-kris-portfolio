@@ -123,6 +123,7 @@ export function profilePageJsonLd({
       jobTitle: doctor.jobTitle,
       description,
       knowsLanguage: [...doctor.languages],
+      knowsAbout: [...site.practiceAreas],
       ...(doctor.portrait ? { image: absoluteUrl(doctor.portrait) } : {}),
       worksFor: { "@id": physicianId() },
       alumniOf: education.map(({ name, type }) => ({ "@type": type, name })),

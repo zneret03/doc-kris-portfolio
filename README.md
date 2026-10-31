@@ -57,6 +57,7 @@ Before pushing, run `yarn lint && yarn typecheck && yarn test && yarn build`.
 | `NEXT_PUBLIC_SITE_URL` | In production | The canonical origin, such as `https://www.example.com`. Canonical URLs, the sitemap, structured data and share images all use it; social networks need it to load the preview image. Falls back to the Vercel production URL, then `http://localhost:3000`. |
 | `CONSULTATION_WEBHOOK_URL` | When the request form is back | Where consultation requests are sent. Without it, the live form tells patients to call instead of pretending the request went through. |
 | `CONSULTATION_WEBHOOK_SECRET` | Optional | Sent as `Authorization: Bearer <secret>` with every request, so the endpoint can reject anything else. |
+| `GOOGLE_SITE_VERIFICATION` | Optional | The `content` value of Google Search Console's HTML-tag verification. Not needed when the domain is verified through DNS. |
 
 ### Booking and consultation requests
 
@@ -131,6 +132,8 @@ The design started from Stitch mockups. It was then audited for generic, AI-temp
 - Every page has its own `opengraph-image.tsx` and `twitter-image.tsx`, rendered at build time as 1200×630 cards. Links pasted into Facebook, LinkedIn, X, WhatsApp, Slack or iMessage show a preview. `share-images.test.ts` fails if a page is missing one.
 - Structured data (JSON-LD) describes the practice as a `Physician` and the site as a `WebSite`, with breadcrumbs and a type for each page, such as `ProfilePage` and `MedicalWebPage`.
 - Vercel preview deployments are kept out of search engines automatically.
+- Search titles and descriptions use "orthopedic", the spelling people search with ("Orthopedic Surgeon in Iloilo City"), while page copy keeps the official "Orthopaedic" of the doctor's credentials. Google treats the two spellings as the same word. `searchTitle` and `description` in `src/config/site.ts` hold the home page's.
+- Ranking for a local search such as "orthopedic doctor in Iloilo" depends mostly on things outside this code: a Google Business Profile for the clinic that links to the site, the same name, address, phone and hours everywhere (site, SeriousMD, Facebook), the site's domain registered in Google Search Console with `sitemap.xml` submitted, and links to the site from the doctor's other profiles.
 
 ## Deployment
 

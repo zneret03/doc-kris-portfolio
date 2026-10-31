@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
 import { brandColors } from "@/config/brand-colors";
-import { doctorFullName, site } from "@/config/site";
+import { doctorFullName, doctorName, site } from "@/config/site";
 import { JsonLd } from "@/features/seo/components/json-ld";
 import { physicianJsonLd, websiteJsonLd } from "@/features/seo/structured-data";
 import { getSiteUrl, isIndexable } from "@/lib/site-url";
@@ -21,8 +21,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: {
-    default: `${doctorFullName} | Sports Medicine & Orthopaedics in ${site.location.locality}`,
-    template: `%s | ${doctorFullName}`,
+    default: `${site.searchTitle} | ${doctorName}`,
+    template: `%s | ${doctorName}`,
   },
   description: site.description,
   applicationName: doctorFullName,
@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   category: "health",
   robots: isIndexable() ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false, email: false, address: false },
+  // Google Search Console's HTML-tag check, when the domain isn't verified by DNS
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   openGraph: {
     type: "website",
     siteName: doctorFullName,

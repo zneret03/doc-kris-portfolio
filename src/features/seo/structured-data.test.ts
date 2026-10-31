@@ -39,6 +39,7 @@ describe("physicianJsonLd", () => {
         url: `${ORIGIN}/`,
         telephone: "+639434977849",
         isAcceptingNewPatients: true,
+        sameAs: ["https://seriousmd.com/doc/kris-raymund-francisco"],
         address: expect.objectContaining({ "@type": "PostalAddress", postalCode: "5000" }),
       }),
     );
@@ -93,6 +94,7 @@ describe("profilePageJsonLd", () => {
         honorificPrefix: "Dr.",
         alternateName: "Kris Raymund A. Francisco",
         knowsLanguage: ["English", "Filipino", "Ilonggo"],
+        knowsAbout: expect.arrayContaining(["Hip and knee replacement"]),
         worksFor: { "@id": `${ORIGIN}/#physician` },
         alumniOf: [{ "@type": "CollegeOrUniversity", name: "West Visayas State University" }],
         hasCredential: [
