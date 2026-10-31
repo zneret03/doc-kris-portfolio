@@ -1,5 +1,5 @@
 import { Container } from "@/components/container";
-import { doctorFullName, site } from "@/config/site";
+import { doctorName, site } from "@/config/site";
 import { ClinicalFocus } from "@/features/home/components/clinical-focus";
 import { ConsultBanner } from "@/features/home/components/consult-banner";
 import { FeaturedTestimonial } from "@/features/home/components/featured-testimonial";
@@ -9,7 +9,7 @@ import { featuredTestimonial } from "@/features/home/content";
 import { pageMetadata } from "@/features/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: `${doctorFullName} | Sports Medicine & Orthopaedics in ${site.location.locality}`,
+  title: `${site.searchTitle} | ${doctorName}`,
   absoluteTitle: true,
   description: site.description,
   path: "/",

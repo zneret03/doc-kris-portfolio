@@ -10,8 +10,8 @@ import { JsonLd } from "@/features/seo/components/json-ld";
 import { pageMetadata } from "@/features/seo/metadata";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/features/seo/structured-data";
 
-const title = "Clinic & Booking";
-const description = `Book a video consultation with ${doctorName} online, or visit the clinic at ${site.location.name}, ${site.location.streetAddress}, ${site.location.locality}. Hours, directions and accessibility.`;
+const title = `Clinic Hours & Booking in ${site.location.locality}`;
+const description = `Book a video consultation with ${doctorName} online, or visit the clinic at ${site.location.name}, ${site.location.streetAddress}, ${site.location.locality}.`;
 
 export const metadata = pageMetadata({ title, description, path: "/clinic" });
 
@@ -32,10 +32,10 @@ export default function ClinicPage() {
       <PatientTestimonials testimonials={patientTestimonials} className="pt-16" />
       <JsonLd
         data={[
-          contactPageJsonLd({ path: "/clinic", name: title }),
+          contactPageJsonLd({ path: "/clinic", name: "Clinic & Booking" }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
-            { name: title, path: "/clinic" },
+            { name: "Clinic & Booking", path: "/clinic" },
           ]),
         ]}
       />

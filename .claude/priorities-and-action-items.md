@@ -77,7 +77,8 @@ Decided during the build:
 
 - Real facility photos. The Vance-branded and cardiac samples are deleted; the specialties page still uses two illustrations (an AI sample and a crop of a stock photo).
 - A favicon set and web manifest polished with the real logo.
-- Analytics and Search Console verification, once the domain is known.
+- Analytics and Search Console verification, once the domain is known (verify the domain through DNS), then submit `sitemap.xml`.
+- Local search: claim or create the Google Business Profile for the clinic (category "Orthopedic surgeon"), link it to the site, and keep its name, address, phone and hours identical to the site and SeriousMD, which disagree today. Add the Facebook page's URL to `sameAs` in `src/config/site.ts`, and link the site from the Facebook page and SeriousMD profile.
 - Performance budget check on the deployed URL: LCP under 2.5s, CLS under 0.1.
 
 ### P2: optional refinements (owner's call)

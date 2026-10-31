@@ -19,8 +19,10 @@ export type OpeningHours = {
 
 export const site = {
   name: "Dr. Kris Francisco, MD, DPBO, FPOA",
+  /** Search titles and descriptions use "orthopedic", the spelling people search with */
+  searchTitle: "Orthopedic Surgeon in Iloilo City",
   description:
-    "Dr. Kris Francisco is a board-certified orthopaedic surgeon in Iloilo City, fellowship-trained in sports medicine, arthroscopy and hip and knee replacement.",
+    "Dr. Kris Francisco is a board-certified orthopedic doctor in Iloilo City for sports injuries, arthritis, fractures, and hip and knee replacement.",
   locale: "en_PH",
 
   doctor: {
@@ -131,8 +133,8 @@ export const site = {
   /** External patient portal. The footer link and header icon only render when set. */
   patientPortalUrl: null as string | null,
 
-  /** Professional profiles (hospital bio, LinkedIn, Doximity…) for structured data */
-  sameAs: [] as string[],
+  /** Profiles of the doctor elsewhere (booking sites, Facebook page) for structured data */
+  sameAs: ["https://seriousmd.com/doc/kris-raymund-francisco"] as string[],
 } as const;
 
 export const doctorName = `${site.doctor.honorificPrefix} ${site.doctor.givenName} ${site.doctor.familyName}`;

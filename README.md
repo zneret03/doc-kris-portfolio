@@ -131,6 +131,8 @@ The design started from Stitch mockups. It was then audited for generic, AI-temp
 - Every page has its own `opengraph-image.tsx` and `twitter-image.tsx`, rendered at build time as 1200×630 cards. Links pasted into Facebook, LinkedIn, X, WhatsApp, Slack or iMessage show a preview. `share-images.test.ts` fails if a page is missing one.
 - Structured data (JSON-LD) describes the practice as a `Physician` and the site as a `WebSite`, with breadcrumbs and a type for each page, such as `ProfilePage` and `MedicalWebPage`.
 - Vercel preview deployments are kept out of search engines automatically.
+- Search titles and descriptions use "orthopedic", the spelling people search with ("Orthopedic Surgeon in Iloilo City"), while page copy keeps the official "Orthopaedic" of the doctor's credentials. Google treats the two spellings as the same word. `searchTitle` and `description` in `src/config/site.ts` hold the home page's.
+- Ranking for a local search such as "orthopedic doctor in Iloilo" depends mostly on things outside this code: a Google Business Profile for the clinic that links to the site, the same name, address, phone and hours everywhere (site, SeriousMD, Facebook), the site's domain registered in Google Search Console with `sitemap.xml` submitted, and links to the site from the doctor's other profiles.
 
 ## Deployment
 
