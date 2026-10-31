@@ -47,7 +47,8 @@ export function physicianJsonLd(): JsonLdObject {
     telephone: site.contact.phone.e164,
     email: site.contact.email,
     address: postalAddress(),
-    medicalSpecialty: ["https://schema.org/Musculoskeletal"],
+    medicalSpecialty: ["https://schema.org/Musculoskeletal", "https://schema.org/Surgical"],
+    hospitalAffiliation: site.hospitals.map((name) => ({ "@type": "Hospital", name })),
     isAcceptingNewPatients: site.availability.acceptingPatients,
     openingHoursSpecification: site.hours.flatMap((row) =>
       "schedule" in row && row.schedule
@@ -72,7 +73,7 @@ export function websiteJsonLd(): JsonLdObject {
     "@id": absoluteUrl("/#website"),
     url: absoluteUrl("/"),
     name: doctorFullName,
-    inLanguage: "en-US",
+    inLanguage: "en-PH",
     publisher: { "@id": physicianId() },
   };
 }
@@ -114,12 +115,14 @@ export function profilePageJsonLd({
       "@type": "Person",
       "@id": personId(),
       name: `${doctor.givenName} ${doctor.familyName}`,
+      alternateName: doctor.legalName,
       givenName: doctor.givenName,
       familyName: doctor.familyName,
       honorificPrefix: doctor.honorificPrefix,
       honorificSuffix: doctor.postNominals,
       jobTitle: doctor.jobTitle,
       description,
+      knowsLanguage: [...doctor.languages],
       ...(doctor.portrait ? { image: absoluteUrl(doctor.portrait) } : {}),
       worksFor: { "@id": physicianId() },
       alumniOf: education.map(({ name, type }) => ({ "@type": type, name })),

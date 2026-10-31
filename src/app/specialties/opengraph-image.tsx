@@ -11,6 +11,6 @@ export default function Image() {
     section: "Specialties & services",
     title: specialtiesHeader.title,
     description:
-      "Minimally invasive valve repair, arterial bypass, aortic reconstruction and preventative heart health.",
+      "Sports medicine and arthroscopy, hip and knee replacement, ultrasound-guided injections and fracture care.",
   });
 }

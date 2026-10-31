@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { User } from "lucide-react";
 
+import { BookingLink } from "@/components/booking-link";
 import { Logo } from "@/components/layout/logo";
 import { MainNav } from "@/components/layout/main-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -17,12 +17,11 @@ export function SiteHeader() {
         <Logo />
         <MainNav className="hidden lg:block" />
         <div className="flex items-center gap-2">
-          <Link
-            href={site.bookingHref}
+          <BookingLink
             className={buttonVariants({ size: "lg", className: "hidden rounded-full px-4 lg:inline-flex" })}
           >
             Book consultation
-          </Link>
+          </BookingLink>
           {site.patientPortalUrl && (
             <a
               href={site.patientPortalUrl}

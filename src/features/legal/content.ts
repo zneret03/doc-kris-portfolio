@@ -21,37 +21,33 @@ const contactLine = `${contact.email} or ${contact.phone.display}`;
 
 export const privacyPolicy: LegalDocument = {
   title: "Privacy Policy",
-  updated: "October 22, 2026",
+  updated: "October 31, 2026",
   intro: `This policy explains what information ${doctorFullName} collects through this website and how it is used.`,
   sections: [
     {
-      heading: "Information you send us",
+      heading: "Booking a consultation",
       paragraphs: [
-        "When you request a consultation, the form collects the details you enter:",
-      ],
-      list: [
-        "your name, phone number and email address",
-        "whether you'd like an in-person or video consultation",
-        "your preferred date and time window",
-        "anything you write about your reason for visiting",
+        "Consultations are booked on SeriousMD and its NowServing service, which open in a new tab. What you enter there is collected and handled by SeriousMD under its own terms and privacy policy, and your booking is shared with the clinic so it can arrange your consultation.",
       ],
     },
     {
       heading: "How it is used",
       paragraphs: [
-        "Your details are used only to respond to your request, arrange appointments and coordinate your care. They are not sold, and they are not used for advertising.",
+        "Details you give the clinic, by phone, by email or through a booking, are used only to arrange appointments and coordinate your care. They are not sold, and they are not used for advertising.",
         "Only include health information you're comfortable sending online. You can share details by phone instead.",
       ],
     },
     {
       heading: "Who receives it",
       paragraphs: [
-        "Requests go to the practice's clinical coordinators, through a service provider that processes them on the practice's behalf.",
+        "Dr. Francisco's clinic, to arrange and prepare for your consultation.",
       ],
     },
     {
       heading: "Cookies and analytics",
-      paragraphs: ["This website does not use advertising or analytics cookies."],
+      paragraphs: [
+        "This website does not use advertising or analytics cookies. SeriousMD and NowServing have their own cookie policies.",
+      ],
     },
     {
       heading: "How long it is kept",
@@ -62,7 +58,7 @@ export const privacyPolicy: LegalDocument = {
     {
       heading: "Your choices",
       paragraphs: [
-        `To see, correct or delete the information you've sent, contact ${contactLine}.`,
+        `Under the Data Privacy Act of 2012, you can ask to see, correct or delete the information you've sent. Contact ${contactLine}.`,
       ],
     },
     {
@@ -76,14 +72,14 @@ export const privacyPolicy: LegalDocument = {
 
 export const medicalDisclaimer: LegalDocument = {
   title: "Medical Disclaimer",
-  updated: "October 22, 2026",
+  updated: "October 31, 2026",
   intro:
     "The information on this website is general. It is not a substitute for advice from a clinician who knows your medical history.",
   sections: [
     {
       heading: "Emergencies",
       paragraphs: [
-        `If you have chest pain, trouble breathing or another emergency, call ${contact.emergencyNumber} or go to the nearest emergency department. Don't use the online request form for urgent care.`,
+        `If you have a serious injury, such as a bone that may be broken or a joint that's out of place, or chest pain, trouble breathing or another emergency, call ${contact.emergencyNumber} or go to the nearest emergency department. Don't use online booking for urgent care.`,
       ],
     },
     {
@@ -95,7 +91,7 @@ export const medicalDisclaimer: LegalDocument = {
     {
       heading: "No doctor–patient relationship",
       paragraphs: [
-        "Reading this website or sending a consultation request does not create a doctor–patient relationship. That begins when a consultation is confirmed.",
+        "Reading this website or booking a consultation online does not create a doctor–patient relationship. That begins when a consultation is confirmed.",
       ],
     },
     {

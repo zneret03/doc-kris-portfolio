@@ -33,13 +33,15 @@ describe("MobileNav", () => {
       "aria-current",
       "page",
     );
-    expect(screen.getByRole("link", { name: "Book consultation" })).toHaveAttribute(
+    expect(
+      screen.getByRole("link", { name: "Book consultation (opens SeriousMD in a new tab)" }),
+    ).toHaveAttribute(
       "href",
-      "/clinic#request-consultation",
+      "https://seriousmd.com/doc/kris-raymund-francisco",
     );
-    expect(screen.getByRole("link", { name: "(555) 019-2830" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "0943-497-7849" })).toHaveAttribute(
       "href",
-      "tel:+15550192830",
+      "tel:+639434977849",
     );
   });
 

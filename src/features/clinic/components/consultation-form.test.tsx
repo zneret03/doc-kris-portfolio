@@ -26,7 +26,7 @@ describe("ConsultationForm", () => {
     await user.type(screen.getByLabelText(/Email address/), "kenneth@example.com");
     await user.selectOptions(
       screen.getByLabelText(/Preferred time window/),
-      "Afternoon (02:00 PM – 05:00 PM)",
+      "Afternoon (3:00 – 5:00 PM)",
     );
     await user.type(screen.getByLabelText(/Reason for visit/), "Second opinion");
     await user.click(screen.getByRole("button", { name: "Request appointment" }));

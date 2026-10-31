@@ -1,38 +1,20 @@
+import { site } from "@/config/site";
+
 export const clinicHeader = {
   title: "Clinic facility & consultations",
-  subtitle:
-    "Sports medicine, arthritis and orthopaedic consultations at Qualimed Healthway Hospital, Iloilo City.",
+  subtitle: `Sports medicine, arthritis and orthopaedic consultations at ${site.location.name}, ${site.location.locality}.`,
   availabilityLabel: "Doctor availability:",
   availabilityValue: "accepting new patients",
 };
 
 export const accessibilityNote = {
-  text: "The clinic is on the 3rd floor of Qualimed Healthway Hospital, with lift access from the main lobby.",
+  text: `The clinic is on the 3rd floor of ${site.location.name}, with lift access from the main lobby.`,
   highlight: "Lift access to the 3rd floor",
 };
 
-// AI-generated samples from the mockups (one shows "Dr Vance" branding):
-// replace with real facility photos
-export const facilityGallery = [
-  {
-    src: "/images/consultation-lounge.jpg",
-    alt: "Consultation lounge where a clinician and a patient talk across a desk in a softly lit modern office",
-    title: "Private diagnostic & family counseling suites",
-    subtitle: "Surgical consultation lounge",
-  },
-  {
-    src: "/images/hybrid-operating-suite.jpg",
-    alt: "Hybrid operating room with a surgical team, a robotic console and cardiac imaging displays",
-    title: "Minimally invasive interventional facility",
-    subtitle: "Hybrid operative suite",
-  },
-];
-
-export type FacilityPhotoContent = (typeof facilityGallery)[number];
-
 export const testimonialsIntro = {
-  title: "Verified clinical outcomes",
-  satisfaction: "Independently audited patient satisfaction: 99.4%",
+  title: "Patient stories",
+  note: "Shared with each patient's written permission.",
 };
 
 export type ClinicTestimonial = {
@@ -42,45 +24,37 @@ export type ClinicTestimonial = {
   rating: number;
 };
 
-// Testimonials are regulated in some jurisdictions; an empty list hides the section
-export const patientTestimonials: ClinicTestimonial[] = [
-  {
-    quote:
-      "The TAVR procedure gave me back my active life with my grandchildren. Dr. Vance's team had me back walking in 3 days with virtually zero downtime.",
-    author: "Robert K.",
-    treated: "Treated Oct 2023",
-    rating: 5,
-  },
-  {
-    quote:
-      "Dr. Vance's calm assurance and precise minimally invasive heart surgery saved my life. I felt complete peace of mind from our first consultation.",
-    author: "Elena M.",
-    treated: "Treated May 2023",
-    rating: 5,
-  },
-];
+// Real testimonials only, with the patient's written consent; an empty list hides the section
+export const patientTestimonials: ClinicTestimonial[] = [];
 
 export const assistance = {
-  title: "Need immediate assistance?",
+  title: "Questions before you book?",
   description:
-    "Our clinical coordinators are dedicated to arranging timely consults, transferring cardiac diagnostic imaging, and orchestrating comprehensive second opinions.",
-  referralLabel: "Referral line",
-  emailLabel: "Case records",
-  // Only keep these claims if the request pipeline really meets them
+    "Call or email to ask about clinic schedules, what to bring or a second opinion. For a serious injury that can't wait, go to the nearest emergency department.",
+  phoneLabel: "Phone",
+  emailLabel: "Email",
   privacy: {
-    title: "HIPAA-compliant & confidential coordination",
+    title: "Kept private",
     description:
-      "All records, DICOM telemetry scans, and medical details are protected under end-to-end 256-bit encryption.",
+      "Your details are used only to arrange your consultation and care. Prefer not to share health details online? Call instead.",
   },
-  responseLabel: "Average response time:",
-  responseValue: "under 2 hours on weekdays",
 };
 
+export const onlineBooking = {
+  title: "Book an online consultation",
+  description:
+    "Request a video consultation on NowServing, SeriousMD's booking service. You'll answer a few questions first, and the consultation itself happens in the NowServing app.",
+  cta: "Book on NowServing",
+  inPersonNote: "For a visit at the clinic, call to book an appointment.",
+};
+
+// Copy for the on-site request form, parked while bookings go through
+// SeriousMD (see src/app/clinic/page.tsx)
 export const consultationForm = {
   title: "Request consultation",
   description:
-    "Please specify your clinical concern and preferred schedule. Our clinical coordinator will confirm your dossier within 2 business hours.",
+    "Tell us what's bothering you and when you'd like to come in. The clinic will contact you to confirm a schedule.",
   submitLabel: "Request appointment",
   successMessage:
-    "Thank you. Your consultation request is submitted. A coordinator will contact you promptly.",
+    "Thank you. Your request has been sent, and the clinic will contact you to confirm a schedule.",
 };

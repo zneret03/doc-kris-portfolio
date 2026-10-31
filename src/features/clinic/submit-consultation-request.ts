@@ -39,7 +39,7 @@ export async function submitConsultationRequest(
   if (!delivery.ok) {
     return {
       status: "error",
-      message: `Online requests can't be sent right now. Call ${site.contact.referralPhone.display} and a coordinator will book your consultation.`,
+      message: `Online requests can't be sent right now. Call ${site.contact.phone.display} to book your consultation.`,
       fieldErrors: {},
       values: parsed.data,
     };

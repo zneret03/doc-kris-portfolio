@@ -1,17 +1,17 @@
 # doc-kris-portfolio
 
-Portfolio and consultation-booking website for a cardiothoracic surgeon, built with Next.js 16, shadcn/ui and Tailwind CSS v4.
+Portfolio and consultation-booking website for Dr. Kris Raymund A. Francisco, MD, DPBO, FPOA, an orthopaedic surgeon in Iloilo City, built with Next.js 16, shadcn/ui and Tailwind CSS v4.
 
-> **Sample content.** The site currently shows the design mockups' sample persona, Dr. Julian Vance, MD, FACS, with sample statistics, testimonials and photos. Replace them with the real practice's details before launch; see [Replacing the sample content](#replacing-the-sample-content).
+> **Content status.** Credentials, training, hospitals, awards and research come from the doctor's 2026 CV. Before launch, confirm the contact details, clinic address and hours, and replace the two illustration photos on the specialties page; see [Updating the content](#updating-the-content).
 
 ## Pages
 
 | Route | What's on it |
 | --- | --- |
-| `/` | Hero, outcome figures, core clinical focus, a featured testimonial, a consultation call to action |
-| `/about` | Biography and surgical ethos, credentials, career timeline, hospital privileges |
-| `/specialties` | Specialties, intraoperative diagnostics, who the practice helps, the care journey |
-| `/clinic` | Location, hours and access, facility photos, testimonials, the consultation request form |
+| `/` | Hero, practice facts, core clinical focus, a featured testimonial (hidden until there is one), a consultation call to action |
+| `/about` | Background and approach, credentials, education and training, hospital affiliations, awards, research, continuing education |
+| `/specialties` | Specialties, diagnosis, who the practice helps, the care journey |
+| `/clinic` | Location, hours and access, phone and email, online booking through NowServing, testimonials (hidden until there are some) |
 | `/privacy`, `/medical-disclaimer` | Legal pages |
 
 The site also generates `sitemap.xml`, `robots.txt`, a web manifest, icons, a 404 page and a social share image for every page.
@@ -34,7 +34,7 @@ yarn install
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). No environment variables are needed in development: the consultation form accepts requests without sending them anywhere and notes that in the server console. To try other settings locally, copy `.env.example` to `.env.local`.
+Open [http://localhost:3000](http://localhost:3000). No environment variables are needed in development. To try other settings locally, copy `.env.example` to `.env.local`.
 
 ## Scripts
 
@@ -55,12 +55,14 @@ Before pushing, run `yarn lint && yarn typecheck && yarn test && yarn build`.
 | Variable | Needed | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | In production | The canonical origin, such as `https://www.example.com`. Canonical URLs, the sitemap, structured data and share images all use it; social networks need it to load the preview image. Falls back to the Vercel production URL, then `http://localhost:3000`. |
-| `CONSULTATION_WEBHOOK_URL` | In production | Where consultation requests are sent. Without it, the live form tells patients to call instead of pretending the request went through. |
+| `CONSULTATION_WEBHOOK_URL` | When the request form is back | Where consultation requests are sent. Without it, the live form tells patients to call instead of pretending the request went through. |
 | `CONSULTATION_WEBHOOK_SECRET` | Optional | Sent as `Authorization: Bearer <secret>` with every request, so the endpoint can reject anything else. |
 
-### Consultation requests
+### Booking and consultation requests
 
-Each request is validated on the server, then sent to `CONSULTATION_WEBHOOK_URL` as one JSON `POST`. An inbox relay, a CRM webhook or an automation tool can receive it:
+Patients book on SeriousMD. Every "Book consultation" link opens the doctor's SeriousMD profile (`bookingHref` in `src/config/site.ts`) in a new tab, and the clinic page links to NowServing's online-clinic booking (`onlineBookingHref`). NowServing can't be embedded in the site: its `Content-Security-Policy` only allows SeriousMD's own domains to frame it.
+
+The site's own request form is parked: the code and tests remain (`src/features/clinic/`), but it isn't on the clinic page until requests have somewhere to go. In development it accepts requests without sending them anywhere and notes that in the server console. When it's back, each request is validated on the server, then sent to `CONSULTATION_WEBHOOK_URL` as one JSON `POST`. An inbox relay, a CRM webhook or an automation tool can receive it:
 
 ```json
 {
@@ -77,7 +79,7 @@ Each request is validated on the server, then sent to `CONSULTATION_WEBHOOK_URL`
 ```
 
 - `modality` is `in-person` or `telehealth`.
-- `timeWindow` is `morning`, `midday`, `afternoon` or `earliest`.
+- `timeWindow` is `morning`, `afternoon` or `earliest`, matching the clinic hours.
 - `reason` is optional and may be empty.
 
 A 2xx response counts as delivered. Any other response, or no answer within 10 seconds, shows the patient the clinic's phone number instead. A hidden honeypot field quietly drops spam bots.
@@ -97,14 +99,14 @@ src/
 
 Pages in `src/app` stay thin and compose components from their feature folder. Each component's tests sit next to it as `*.test.tsx`. The full conventions are in [`CLAUDE.md`](CLAUDE.md).
 
-## Replacing the sample content
+## Updating the content
 
 | What | Where |
 | --- | --- |
 | Doctor's name, credentials and specialty, contact details, address, hours, availability, navigation | `src/config/site.ts` |
 | Portrait | Add the image to `public/images/` and set `doctor.portrait` in `src/config/site.ts` |
 | Page copy, statistics and testimonials | `src/features/<page>/content.ts` |
-| Facility photos | `public/images/` |
+| Facility photos | `public/images/`; the clinic page has no photo row until real ones exist |
 | Privacy policy and medical disclaimer | `src/features/legal/content.ts` |
 | Patient portal link and social profiles (optional) | `patientPortalUrl` and `sameAs` in `src/config/site.ts` |
 
@@ -113,7 +115,7 @@ Before launch:
 - Back every statistic and outcome claim with evidence, or remove it.
 - Get written consent for each testimonial, and check that the jurisdiction allows testimonials at all. In Australia, for example, AHPRA prohibits testimonials about clinical care in health advertising.
 - Have the legal pages reviewed.
-- Replace the sample photos; two of them show the sample doctor's branding.
+- Replace the illustration photos on the specialties page (an AI-generated sample and a stock crop) with real ones.
 
 The full launch checklist is in [`.claude/priorities-and-action-items.md`](.claude/priorities-and-action-items.md).
 
@@ -134,8 +136,8 @@ The design started from Stitch mockups. It was then audited for generic, AI-temp
 
 Any host that runs Next.js 16 works, and Vercel needs no extra configuration.
 
-1. Set `NEXT_PUBLIC_SITE_URL` and `CONSULTATION_WEBHOOK_URL`, plus `CONSULTATION_WEBHOOK_SECRET` if the endpoint checks it.
-2. Deploy, then send a test request through the form and confirm it arrives.
+1. Set `NEXT_PUBLIC_SITE_URL`. Once the request form is back, also set `CONSULTATION_WEBHOOK_URL`, plus `CONSULTATION_WEBHOOK_SECRET` if the endpoint checks it.
+2. Deploy, then check that the booking links open SeriousMD and NowServing (and, with the form back, send a test request and confirm it arrives).
 3. Check the share previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) and [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/), and the structured data with Google's [Rich Results Test](https://search.google.com/test/rich-results).
 
 ## Working with Claude Code

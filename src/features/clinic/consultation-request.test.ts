@@ -15,7 +15,7 @@ function formData(overrides: Record<string, string> = {}) {
     email: "kenneth@example.com",
     preferredDate: "2026-10-30",
     timeWindow: "morning",
-    reason: "Second opinion on mitral valve repair.",
+    reason: "Second opinion on knee replacement.",
     ...overrides,
   };
   Object.entries(values).forEach(([key, value]) => data.set(key, value));
@@ -101,10 +101,10 @@ describe("parseConsultationRequest", () => {
 
 describe("isoDateInTimeZone", () => {
   it("uses the clinic's calendar date, not the server's", () => {
-    // 02:00 UTC on Oct 23 is still Oct 22 in New York
-    const now = new Date("2026-10-23T02:00:00Z");
+    // 16:30 UTC on Oct 22 is already Oct 23 in Manila
+    const now = new Date("2026-10-22T16:30:00Z");
 
-    expect(isoDateInTimeZone(now, "America/New_York")).toBe("2026-10-22");
-    expect(isoDateInTimeZone(now, "UTC")).toBe("2026-10-23");
+    expect(isoDateInTimeZone(now, "Asia/Manila")).toBe("2026-10-23");
+    expect(isoDateInTimeZone(now, "UTC")).toBe("2026-10-22");
   });
 });

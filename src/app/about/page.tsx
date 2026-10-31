@@ -3,21 +3,19 @@ import { doctorName, site } from "@/config/site";
 import { AboutCta } from "@/features/about/components/about-cta";
 import { AboutIntro } from "@/features/about/components/about-intro";
 import { AboutPortrait } from "@/features/about/components/about-portrait";
+import { AwardsList } from "@/features/about/components/awards-list";
 import { CareerTimeline } from "@/features/about/components/career-timeline";
+import { ContinuingEducation } from "@/features/about/components/continuing-education";
 import { CredentialsGrid } from "@/features/about/components/credentials-grid";
-import { HospitalPrivileges } from "@/features/about/components/hospital-privileges";
-import {
-  aboutIntro,
-  careerTimeline,
-  credentials,
-  hospitalPrivileges,
-} from "@/features/about/content";
+import { HospitalAffiliations } from "@/features/about/components/hospital-affiliations";
+import { ResearchList } from "@/features/about/components/research-list";
+import { aboutIntro, careerTimeline, credentials } from "@/features/about/content";
 import { JsonLd } from "@/features/seo/components/json-ld";
 import { pageMetadata } from "@/features/seo/metadata";
 import { breadcrumbJsonLd, profilePageJsonLd } from "@/features/seo/structured-data";
 
 const title = "About & Credentials";
-const description = `Board certification, fellowships, career milestones and hospital privileges of ${doctorName}, ${site.doctor.jobTitle.toLowerCase()} in ${site.location.locality}.`;
+const description = `Board certification, fellowship training, hospital affiliations, awards and research of ${doctorName}, ${site.doctor.jobTitle.toLowerCase()} in ${site.location.locality}.`;
 
 export const metadata = pageMetadata({
   title,
@@ -38,7 +36,10 @@ export default function AboutPage() {
           <AboutIntro />
           <CredentialsGrid />
           <CareerTimeline />
-          <HospitalPrivileges />
+          <HospitalAffiliations />
+          <AwardsList />
+          <ResearchList />
+          <ContinuingEducation />
           <AboutCta />
         </article>
         <aside className="hidden lg:col-span-4 lg:col-start-9 lg:block">
@@ -54,8 +55,8 @@ export default function AboutPage() {
               name: step.institution,
               type: step.institutionType,
             })),
-            credentials: credentials.flatMap((item) => (item.credential ? [item.credential] : [])),
-            affiliations: hospitalPrivileges.map((hospital) => hospital.name),
+            credentials: credentials.map((item) => item.credential),
+            affiliations: [...site.hospitals],
           }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },

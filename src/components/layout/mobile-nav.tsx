@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Phone } from "lucide-react";
 
+import { BookingLink } from "@/components/booking-link";
 import { BrandMark } from "@/components/layout/logo";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -75,13 +76,9 @@ export function MobileNav({ className }: { className?: string }) {
           </ul>
         </nav>
         <SheetFooter className="gap-3 p-5">
-          <Link
-            href={site.bookingHref}
-            onClick={close}
-            className={buttonVariants({ size: "xl", className: "w-full" })}
-          >
+          <BookingLink onClick={close} className={buttonVariants({ size: "xl", className: "w-full" })}>
             Book consultation
-          </Link>
+          </BookingLink>
           <a
             href={telHref(site.contact.phone)}
             className={buttonVariants({ variant: "secondary", size: "xl", className: "w-full" })}

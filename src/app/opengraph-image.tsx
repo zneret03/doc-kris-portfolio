@@ -11,6 +11,6 @@ export default function Image() {
     section: site.doctor.specialty,
     title: `${hero.title} ${hero.titleContinued}`,
     description:
-      "Minimally invasive valve repair, arterial bypass and aortic reconstruction, with patient-first recovery.",
+      "Board-certified orthopaedic surgeon, fellowship-trained in sports medicine and in hip and knee replacement.",
   });
 }

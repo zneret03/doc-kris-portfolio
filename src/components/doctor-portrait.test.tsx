@@ -14,7 +14,7 @@ describe("DoctorPortrait", () => {
     render(<DoctorPortrait src="/images/portrait.jpg" sizes="400px" />);
 
     expect(
-      screen.getByRole("img", { name: "Portrait of Dr. Kris Francisco, MD" }),
+      screen.getByRole("img", { name: "Portrait of Dr. Kris Francisco, MD, DPBO, FPOA" }),
     ).toBeInTheDocument();
     expect(screen.queryByTestId("portrait-placeholder")).not.toBeInTheDocument();
   });

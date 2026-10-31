@@ -13,7 +13,7 @@ describe("pageMetadata", () => {
     expect(metadata.openGraph).toEqual(
       expect.objectContaining({
         type: "website",
-        siteName: "Dr. Kris Francisco, MD",
+        siteName: "Dr. Kris Francisco, MD, DPBO, FPOA",
         locale: "en_PH",
         url: "/about",
         title: "About & Credentials",

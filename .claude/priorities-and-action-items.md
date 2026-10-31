@@ -13,13 +13,13 @@ Legend: `[x]` done · `[ ]` to do · **P0** blocks launch · **P1** soon after l
 | Mockup screen             | Route          | Sections                                                                                                                             |
 | ------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | Home (Overview)           | `/`            | Hero with portrait and availability badge, impact metrics, core clinical focus (3 specialties), featured testimonial, consult banner |
-| About & Credentials       | `/about`       | Intro with portrait and ethos, credentials (4), career timeline (3), hospital privileges (2), consult CTA                            |
-| Specialties & Services    | `/specialties` | Header with outcome metrics, specialties (4), intraoperative diagnostics, who we help (3), care journey (3 steps), inquiries CTA      |
-| Clinic & Booking          | `/clinic`      | Header with availability, location, hours and access cards, facility gallery, testimonials, assistance panel, consultation request form |
+| About & Credentials       | `/about`       | Intro with portrait, background and approach, credentials (3), education and training (5), hospital affiliations (9), awards, research, continuing education, consult CTA |
+| Specialties & Services    | `/specialties` | Header (outcome strip hidden until figures are verified), specialties (4), diagnosis, who we help (3), care journey (3 steps), inquiries CTA |
+| Clinic & Booking          | `/clinic`      | Header with availability; location, hours, access and contacts beside the NowServing booking card; testimonials (hidden while empty). The facility gallery is gone until real photos exist, and the request form is parked |
 
 Supporting routes, not in the mockups but needed: `/privacy`, `/medical-disclaimer`, a 404 page, `sitemap.xml`, `robots.txt`, a web manifest, icons, and an Open Graph image for every page.
 
-Every "Book consultation" or "Schedule…" CTA goes to `/clinic#request-consultation`. Specialty links go to `/specialties#<specialty>`.
+Every "Book consultation" or "Schedule…" CTA goes to the doctor's SeriousMD profile (`site.bookingHref`), where patients book online. They open in a new tab. The clinic page links to NowServing's online-clinic booking instead of the on-site request form, which is parked until requests have a destination (it can't be embedded: NowServing's CSP allows only SeriousMD's domains as frame ancestors). Specialty links go to `/specialties#<specialty>`.
 
 ## 2. Design system translation
 
@@ -75,7 +75,7 @@ Decided during the build:
 
 ### P1: soon after launch
 
-- Real facility photos to replace the AI samples (two show "Dr Vance" branding).
+- Real facility photos. The Vance-branded and cardiac samples are deleted; the specialties page still uses two illustrations (an AI sample and a crop of a stock photo).
 - A favicon set and web manifest polished with the real logo.
 - Analytics and Search Console verification, once the domain is known.
 - Performance budget check on the deployed URL: LCP under 2.5s, CLS under 0.1.
@@ -137,9 +137,12 @@ The Hallmark pass removed the templated tells the `frontend-design` skill had fl
 
 ### Remaining before launch (needs the owner, see section 6)
 
-- [ ] Replace the sample persona and all content with the real practice's details
-- [ ] Real portrait, logo and facility photos
-- [ ] Set `NEXT_PUBLIC_SITE_URL` and `CONSULTATION_WEBHOOK_URL` in production, then send a test request end to end
+- [x] Replace the sample persona with Dr. Kris Raymund A. Francisco's CV (2026-10-31): credentials, training, hospitals, awards, research, recent courses, languages, contact details and a portrait cropped from `public/images/doc-kris-profile.jpg`. Sample testimonials and outcome figures are removed; their sections hide while empty
+- [ ] Confirm with the doctor: publishing the CV's mobile number and Gmail address (or a clinic line instead), the clinic address and hours, and the conditions listed under each specialty
+- [ ] Two CV entries disagree with themselves: "Most Outstanding Orthopaedic Resident" nominee is dated November 2020 but named the POA 70th convention (the 71st was 2020), and "Outstanding Surgery Intern" says C.Y. 2015–2016 though the clerkship ran April 2014 – March 2015. The site shows 2020 for the first and no year for the second
+- [ ] Real logo and facility photos
+- [ ] Set `NEXT_PUBLIC_SITE_URL` in production
+- [ ] Bring back the on-site request form (`ConsultationRequestCard` with the `requestConsultation` action) once requests have a destination: set `CONSULTATION_WEBHOOK_URL`, restore the privacy policy's form section, and send a test request end to end
 - [ ] Legal review of the privacy policy, disclaimer, testimonials and outcome claims for the practice's jurisdiction
 - [ ] Check share previews on the live domain with each platform's debugger (Facebook Sharing Debugger, LinkedIn Post Inspector), and validate structured data with Google's Rich Results Test
 
@@ -161,7 +164,7 @@ These block launch but not the build. Each one maps to a file.
 
 ### Content risks to resolve before launch
 
-- **Outcome claims** ("99% patient satisfaction", "98.9% procedure success", "0% unplanned readmit", "95%+ graft patency") must be substantiated or removed. The sample numbers also contradict each other: 1,800+ surgeries on one page, 3,200 operations on another.
+- **Outcome claims**: the sample figures are removed. The home strip shows CV facts (fellowships, hospitals, languages); success rates or patient numbers need a source before they go back in.
 - **Testimonials** are restricted in some places. In Australia, AHPRA prohibits testimonials about clinical care in health advertising, and in the US the FTC requires them to be genuine and representative. Each testimonial section hides itself when its list is empty.
-- **"HIPAA compliant" and "256-bit encryption"** may only stay if the form's delivery pipeline really meets them. The form collects health information, so the privacy policy has to describe how it's handled.
-- **Sample branding in the photos** ("DR VANCE CLINIC") has to go along with the persona.
+- **Privacy claims**: the sample "HIPAA compliant" and "256-bit encryption" lines are removed (HIPAA is US law). The form collects health information, so the privacy policy, which now cites the Philippine Data Privacy Act of 2012, has to describe how requests are really handled.
+- **Personal data from the CV**: the birth date, home address and referees' phone numbers are deliberately left off the site, and so is the PRC license number (patients can verify it with the PRC instead).

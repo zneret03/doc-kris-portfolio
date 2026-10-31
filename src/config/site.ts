@@ -1,6 +1,6 @@
 // Practice-wide facts used by the layout, pages, SEO and social images.
-// Everything here is the sample persona from the Stitch mockups; replace it
-// with the real practice details before launch.
+// Credentials, languages, hospitals and contact details come from Dr.
+// Francisco's CV (2026); the clinic address and hours from a public listing.
 
 export type PhoneNumber = {
   /** As shown on the page */
@@ -18,44 +18,46 @@ export type OpeningHours = {
 };
 
 export const site = {
-  name: "Dr. Kris Francisco, MD",
+  name: "Dr. Kris Francisco, MD, DPBO, FPOA",
   description:
-    "Sports medicine, arthritis and orthopaedic care in Iloilo City. Dr. Kris Francisco treats sports injuries, joint pain and bone and muscle problems at Qualimed Healthway Hospital, Mandurriao.",
+    "Dr. Kris Francisco is a board-certified orthopaedic surgeon in Iloilo City, fellowship-trained in sports medicine, arthroscopy and hip and knee replacement.",
   locale: "en_PH",
 
   doctor: {
     honorificPrefix: "Dr.",
     givenName: "Kris",
     familyName: "Francisco",
-    postNominals: "MD",
+    /** Full name as it appears on the CV, for the profile and structured data */
+    legalName: "Kris Raymund A. Francisco",
+    postNominals: "MD, DPBO, FPOA",
     initials: "KF",
-    jobTitle: "Orthopaedic & Sports Medicine Specialist",
+    jobTitle: "Orthopaedic Surgeon",
     specialty: "Sports medicine, arthritis & orthopaedics",
-    /** Board or society membership, e.g. a PBOS diplomate or POA fellowship: still to confirm */
-    board: null as string | null,
+    board: "Diplomate, Philippine Board of Orthopaedics",
     summary: "Helping Iloilo move better, from sports injuries to arthritic joints.",
-    yearsInPractice: 15,
+    languages: ["English", "Filipino", "Ilonggo"],
     /**
      * Path under /public, e.g. "/images/portrait.jpg". Null shows the monogram placeholder.
-     * Currently a stock sample (Pexels licence) for the doctor to choose a style from; the
-     * others are in /images/portrait-samples/ (clinic-scrubs, studio-plain, relaxed-seated).
-     * Replace with the doctor's own photo before launch.
+     * A square crop of /images/doc-kris-profile.jpg that stops above the coat embroidery
+     * and the caption band baked into the original.
      */
-    portrait: "/images/portrait-samples/x-ray-review.jpg" as string | null,
+    portrait: "/images/kris-francisco-portrait.jpg" as string | null,
   },
 
   contact: {
-    phone: { display: "(555) 019-2830", e164: "+15550192830" } satisfies PhoneNumber,
-    referralPhone: { display: "+1 (800) 555-0198", e164: "+18005550198" } satisfies PhoneNumber,
-    email: "care@drjulianvance.com",
+    // The doctor's own mobile and email from the CV. Swap in a clinic or
+    // secretary line here if patients shouldn't call the doctor directly.
+    // Hyphens, not spaces: this typeface's narrow space barely separates digits.
+    phone: { display: "0943-497-7849", e164: "+639434977849" } satisfies PhoneNumber,
+    email: "dockrisfrancisco@gmail.com",
     /** Local emergency number, used in the medical disclaimer */
     emergencyNumber: "911",
   },
 
   // Address and hours from a public clinic directory listing (clinicfinderph.com):
-  // confirm both with the clinic before launch
+  // confirm both with the clinic before launch. The hospital name follows the CV.
   location: {
-    name: "Qualimed Healthway Hospital",
+    name: "Healthway Qualimed Hospital",
     building: "Orthopaedic Clinic, 3rd floor",
     streetAddress: "Donato Pison Ave, Mandurriao",
     locality: "Iloilo City",
@@ -80,6 +82,19 @@ export const site = {
     },
   ] satisfies OpeningHours[],
 
+  /** Hospitals where Dr. Francisco is an orthopaedic consultant, in the CV's order */
+  hospitals: [
+    "Western Visayas Medical Center",
+    "Healthway Qualimed Hospital Iloilo",
+    "The Medical City Iloilo",
+    "Medicus Medical Center",
+    "Iloilo Doctors' Hospital",
+    "Antique Medical Center",
+    "Asia Pacific Medical Center – Iloilo City",
+    "Holy Mary Women's and Children's Hospital",
+    "St. Paul's Hospital Iloilo",
+  ],
+
   /** The closing line of every page (Ft5 statement footer) */
   statement: "Back on the field, back on your feet.",
 
@@ -96,12 +111,21 @@ export const site = {
     { href: "/clinic", label: "Clinic & booking", short: "Clinic" },
   ],
 
-  bookingHref: "/clinic#request-consultation",
+  /** Every "Book consultation" link: Dr. Francisco's SeriousMD profile, where patients book online */
+  bookingHref: "https://seriousmd.com/doc/kris-raymund-francisco",
+  /**
+   * NowServing booking for the online clinic (clinic 39612, video), used on the
+   * clinic page. No appointmentdate: the booking flow opens the same without it,
+   * and a fixed date would go stale.
+   */
+  onlineBookingHref: "https://nowserving.seriousmd.com/doctor/kris-raymund-francisco?clinicid=39612&virtual=1",
 
+  /** Services for structured data; they match the specialties page */
   practiceAreas: [
-    "Sports Injury Treatment",
-    "Arthritis Care",
-    "Orthopaedic Consultation",
+    "Sports medicine and arthroscopy",
+    "Hip and knee replacement",
+    "Ultrasound-guided injections",
+    "Fracture care",
   ],
 
   /** External patient portal. The footer link and header icon only render when set. */

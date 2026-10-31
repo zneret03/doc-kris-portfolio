@@ -1,10 +1,8 @@
-import Link from "next/link";
-
+import { BookingLink } from "@/components/booking-link";
 import { DoctorPortrait } from "@/components/doctor-portrait";
 import { StatusDot } from "@/components/status-dot";
 import { TextLink } from "@/components/text-link";
 import { buttonVariants } from "@/components/ui/button";
-import { site } from "@/config/site";
 import { hero } from "@/features/home/content";
 
 // H2 split diptych, 7/5: the claim on the left, the portrait as its proof.
@@ -22,9 +20,7 @@ export function HomeHero() {
         </h1>
         <p className="max-w-[56ch] text-body-lg text-muted-foreground">{hero.description}</p>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-2">
-          <Link href={site.bookingHref} className={buttonVariants({ size: "xl" })}>
-            Book consultation
-          </Link>
+          <BookingLink className={buttonVariants({ size: "xl" })}>Book consultation</BookingLink>
           <TextLink href="/specialties">Explore care specialties</TextLink>
         </div>
         <ul className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-label-md text-muted-foreground">

@@ -2,7 +2,7 @@
 
 # doc-kris-portfolio
 
-Portfolio website for a cardiothoracic surgeon, built from the Stitch "Clinical Midnight" mockups (dark only). The site currently shows the mockups' sample persona, **Dr. Julian Vance, MD, FACS**. Every practice fact lives in `src/config/site.ts` and in each feature's `content.ts`, so the real doctor's details replace it there. Plan and the owner inputs still needed: `.claude/priorities-and-action-items.md`. The design system is locked in `design.md` at the root; `.claude/hallmark-audit.md` records the AI-slop audit that produced it.
+Portfolio website for an orthopaedic surgeon, **Dr. Kris Raymund A. Francisco, MD, DPBO, FPOA** (sports medicine and hip and knee replacement, Iloilo City), built from the Stitch "Clinical Midnight" mockups (dark only). Credentials, training, hospitals, awards and research come from the doctor's 2026 CV. Every practice fact lives in `src/config/site.ts` and in each feature's `content.ts`. Plan and the owner inputs still needed: `.claude/priorities-and-action-items.md`. The design system is locked in `design.md` at the root; `.claude/hallmark-audit.md` records the AI-slop audit that produced it.
 
 ## Stack
 

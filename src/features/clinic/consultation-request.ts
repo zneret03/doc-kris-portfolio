@@ -6,11 +6,11 @@ export const modalities = [
   { value: "telehealth", label: "Telehealth" },
 ] as const;
 
+// Follows the clinic hours in src/config/site.ts
 export const timeWindows = [
-  { value: "morning", label: "Morning (08:30 AM – 11:30 AM)" },
-  { value: "midday", label: "Midday (11:30 AM – 02:00 PM)" },
-  { value: "afternoon", label: "Afternoon (02:00 PM – 05:00 PM)" },
-  { value: "earliest", label: "Earliest available operative review" },
+  { value: "morning", label: "Morning (10:00 AM – 12:00 PM)" },
+  { value: "afternoon", label: "Afternoon (3:00 – 5:00 PM)" },
+  { value: "earliest", label: "Earliest available" },
 ] as const;
 
 export type Modality = (typeof modalities)[number]["value"];
