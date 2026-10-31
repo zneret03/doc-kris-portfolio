@@ -18,7 +18,7 @@ describe("PatientTestimonials", () => {
       />,
     );
 
-    expect(screen.getByRole("heading", { name: "Verified clinical outcomes" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Patient stories" })).toBeInTheDocument();
     expect(screen.getByText("“Back walking in three days.”")).toBeInTheDocument();
     expect(screen.getByText("— Robert K.")).toBeInTheDocument();
     expect(screen.getByText("Treated Oct 2023")).toBeInTheDocument();

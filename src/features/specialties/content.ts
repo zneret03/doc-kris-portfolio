@@ -1,27 +1,32 @@
-import { BadgeCheck, Clock, Heart, Lock, SquareCheck, type LucideIcon } from "lucide-react";
+import {
+  BadgeCheck,
+  ClipboardList,
+  Footprints,
+  Languages,
+  SquareCheck,
+  type LucideIcon,
+} from "lucide-react";
+
+import { site } from "@/config/site";
 
 export const specialtiesHeader = {
   title: "Specialties & clinical services",
   subtitle:
-    "Advanced cardiovascular interventions simplified and personalized around your recovery and quality of life.",
+    "Orthopaedic care for sports injuries, arthritis and broken bones, starting with the least invasive treatment that will work.",
 };
 
-// Sample outcome figures from the mockups: verify or remove before launch
-export const outcomes: { value: string; unit?: string; label: string }[] = [
-  { value: "98.9%", label: "Procedure success" },
-  { value: "2.4", unit: "days", label: "Median discharge" },
-  { value: "1,800+", label: "Surgeries completed" },
-  { value: "0%", label: "Unplanned readmissions" },
-];
+export type Outcome = { value: string; unit?: string; label: string };
+
+// Verified outcome figures only, each with a source; an empty list hides the strip
+export const outcomes: Outcome[] = [];
 
 export const specialtiesIntro = {
-  title: "Core surgical & preventative specialties",
-  description:
-    "Surgically conservative, technologically advanced pathways prioritizing minimal tissue disruption and lasting patency.",
+  title: "Core specialties",
+  description: "From injections and casting to keyhole surgery and joint replacement.",
 };
 
 export type Specialty = {
-  /** Anchor used by links such as /specialties#valve-repair */
+  /** Anchor used by links such as /specialties#sports-medicine */
   id: string;
   title: string;
   tag: string;
@@ -30,75 +35,78 @@ export type Specialty = {
   note: string;
 };
 
+// Services from the CV. The conditions listed are the usual reasons for each
+// treatment: confirm them with Dr. Francisco.
 export const specialties: Specialty[] = [
   {
-    id: "valve-repair",
-    title: "Minimally invasive heart valve repair",
+    id: "sports-medicine",
+    title: "Sports medicine & arthroscopy",
     tag: "Minimally invasive",
     description:
-      "Advanced transcatheter and micro-incision reconstructive surgery for mitral and aortic valves, designed to preserve natural anatomy and maximize physiological recovery.",
+      "Arthroscopy is keyhole surgery: a small camera and fine instruments go into the joint through a few small incisions, so many injuries can be repaired without opening it up.",
     highlights: [
-      "TAVR, MitraClip & mini-thoracotomy approaches",
-      "Reduced blood loss, lower infection risk & minimal scarring",
-      "Rapid return to independent daily activity in days",
+      "Knee: ligament, meniscus and cartilage injuries",
+      "Shoulder: dislocations, instability and rotator cuff tears",
+      "Ankle: sprains that won't settle and cartilage damage",
     ],
-    note: "Post-op timeline: 48–72 hours",
+    note: "Fellowship-trained at Makati Medical Center",
   },
   {
-    id: "coronary-bypass",
-    title: "Coronary artery bypass (CABG)",
-    tag: "Durability focused",
+    id: "joint-replacement",
+    title: "Hip & knee replacement",
+    tag: "Arthritis care",
     description:
-      "Precision surgical revascularization utilizing exclusively arterial grafts to restore unrestricted perfusion, ensuring optimal multi-decade conduit patency.",
+      "When arthritis still limits walking, stairs or sleep after medicine, exercise and injections, replacing the worn joint surfaces can relieve pain and restore movement.",
     highlights: [
-      "Advanced total arterial grafting (bilateral internal thoracic)",
-      "Off-pump (beating-heart) revascularization capability",
-      "Engineered for lifelong ischemic symptom resolution",
+      "Arthritis care without surgery comes first",
+      "Total knee and total hip replacement",
+      "Rehabilitation and follow-up after the operation",
     ],
-    note: "95%+ 15-year graft patency",
+    note: "Fellowship-trained under Dr. Ramon B. Gustilo",
   },
   {
-    id: "aortic-reconstruction",
-    title: "Aortic care & reconstruction",
-    tag: "High acuity",
+    id: "ultrasound-guided-injections",
+    title: "Ultrasound-guided injections",
+    tag: "Non-surgical",
     description:
-      "Specialized structural repair of the ascending aorta, aortic root, and aortic arch using valve-sparing techniques and hybrid endovascular technologies.",
+      "Musculoskeletal ultrasound shows tendons, ligaments and joints in real time and guides the needle, so an injection reaches the exact spot that needs it.",
     highlights: [
-      "Tissue-preserving David procedure (root reconstruction)",
-      "Thoracic endovascular aortic repair (TEVAR) options",
-      "Proactive hemodynamic stabilization and dissection management",
+      "Joint, tendon and bursa injections under ultrasound",
+      "Ultrasound checks of muscles, tendons and ligaments",
+      "Often tried before surgery, or instead of it",
     ],
-    note: "Valve-sparing standard",
+    note: "Trained in basic and interventional MSK ultrasound",
   },
   {
-    id: "preventative-cardiology",
-    title: "Preventative heart health & longevity",
-    tag: "Proactive longevity",
+    id: "fracture-care",
+    title: "Fractures & general orthopaedics",
+    tag: "Bone & joint care",
     description:
-      "Data-driven cardiometabolic screening to identify subclinical disease long before emergency intervention, pairing modern biomarkers with lifestyle architecture.",
+      "Broken bones and everyday bone, joint and muscle problems: a cast when a fracture can heal on its own, and surgery when it needs to be fixed in place.",
     highlights: [
-      "Advanced ApoB, Lp(a) and small-dense LDL lipid fractionation",
-      "Coronary artery calcium (CAC) quantification & CT angiography",
-      "Cardiorespiratory conditioning & personalized pharmacological protocols",
+      "Casting and splinting",
+      "Surgical fixation, including intramedullary nailing",
+      "Follow-up X-rays until the bone has healed",
     ],
-    note: "Precision risk mapping",
+    note: "Research on bone healing in femoral fractures",
   },
 ];
 
 export const diagnostics = {
-  title: "Integrated intraoperative diagnostics",
+  title: "A clear diagnosis first",
   description:
-    "Procedures are performed within state-of-the-art hybrid surgical suites combining real-time 3D fluoroscopy, 4D transesophageal echocardiography, and immediate post-reconstruction flowmetry.",
-  tags: ["4D intraoperative echo", "Transit-time flow measurement", "Intracardiac navigation"],
-  // AI-generated samples from the mockups: replace with real photos
+    "Every plan starts with an examination and a careful look at your X-rays or MRI. Musculoskeletal ultrasound adds a live view of tendons and ligaments as they move, so treatment, and surgery if you need it, is aimed at the real cause.",
+  tags: ["Physical examination", "X-ray and MRI review", "Musculoskeletal ultrasound"],
+  // Illustrations, not photos of the clinic: a crop of the Pexels portrait sample
+  // (hands only) and an AI-generated sample from the mockups. Replace with real photos.
   images: [
     {
-      src: "/images/surgical-instruments.jpg",
-      alt: "Cardiothoracic surgical instruments laid out on a sterile table under operating-room lights",
+      src: "/images/x-ray-review-detail.jpg",
+      alt: "A doctor in a white coat holding up an X-ray film",
     },
     {
-      src: "/images/cardiac-ct-reconstruction.jpg",
-      alt: "3D CT reconstruction of a heart and its coronary arteries on a diagnostics monitor",
+      src: "/images/surgical-instruments.jpg",
+      alt: "Surgical instruments laid out on a sterile table under operating-room lights",
     },
   ],
 };
@@ -106,69 +114,67 @@ export const diagnostics = {
 export const cohortsIntro = {
   title: "Who we help",
   description:
-    "Every consultation begins with empathetic listening and an objective examination of your full medical narrative.",
+    "Every consultation starts with your story: how the problem began, what it keeps you from doing, and what you want to get back to.",
 };
 
 export const cohorts = [
   {
-    title: "Complex cardiac patients",
+    title: "Athletes & active people",
     description:
-      "Patients managing severe multi-vessel disease, combined valve and vascular challenges, or anatomical variations requiring collaborative surgical stratagems.",
-    focus: "Holistic surgical staging & risk optimization",
+      "Football and basketball players, runners and weekend players with ligament tears, meniscus injuries, shoulder dislocations or ankle sprains that won't settle.",
+    focus: "A safe, staged return to sport",
+  },
+  {
+    title: "Joint pain & arthritis",
+    description:
+      "Knee and hip pain that limits walking, stairs or sleep, from early arthritis to joints worn enough to need replacing.",
+    focus: "Less pain and easier movement",
   },
   {
     title: "Second opinion seekers",
     description:
-      "Individuals seeking diagnostic confirmation, alternate surgical access options, or evaluation for minimally invasive procedures after traditional open surgery recommendations.",
-    focus: "Unbiased record review & less-invasive alternatives",
-  },
-  {
-    title: "Preventative & high-risk",
-    description:
-      "Endurance athletes, high-stress executives, or individuals with severe familial cardiovascular history who require deep-phenotype preventative cardiometabolic planning.",
-    focus: "Pre-symptomatic detection & plaque stabilization",
+      "Anyone told they need an operation who wants their X-rays, MRI and options reviewed before deciding.",
+    focus: "A clear explanation of every option",
   },
 ];
 
 export const journeyIntro = {
   title: "Your care journey",
-  description:
-    "Navigating cardiovascular treatment is transparent, supportive, and methodically structured from pre-consult to long-term wellness.",
+  description: "From the first consultation to getting back to what you love, in three clear steps.",
 };
 
 // A real sequence, so the steps are numbered
 export const journeySteps: { title: string; description: string; note: string; noteIcon: LucideIcon }[] = [
   {
-    title: "In-depth consultation & diagnostics",
+    title: "Consultation & examination",
     description:
-      "A comprehensive clinical review including echocardiograms, coronary angiographies, and functional metrics paired with unhurried discussion regarding symptoms and questions.",
-    note: "60–90 minute diagnostic review",
-    noteIcon: Clock,
+      "An unhurried conversation about your symptoms and goals, a physical examination, and a review of your X-rays or MRI, with ultrasound when it helps.",
+    note: "Bring previous X-rays, MRI scans and reports",
+    noteIcon: ClipboardList,
   },
   {
-    title: "Tailored treatment plan",
+    title: "A plan that starts conservative",
     description:
-      "A custom treatment blueprint constructed around your exact anatomical geometry, lifestyle targets, and overall health status, utilizing the safest and most conservative surgical option.",
-    note: "Multidisciplinary tumor/heart board review",
+      "Medicine, physiotherapy, bracing or an ultrasound-guided injection first. If keyhole surgery or a joint replacement will help more, every step is explained before you decide.",
+    note: "Surgery only when it's the better option",
     noteIcon: SquareCheck,
   },
   {
-    title: "Dedicated post-op recovery",
+    title: "Recovery & return to activity",
     description:
-      "Structured progressive rehabilitation with 24/7 care team access, remote biometric recovery tracking, and a warm transition back to your primary cardiologist.",
-    note: "Continuous post-discharge telemetry",
-    noteIcon: Heart,
+      "Follow-up visits and physiotherapy, with a staged return to work, sport and everyday life.",
+    note: "Follow-up until you're moving well again",
+    noteIcon: Footprints,
   },
 ];
 
 export const inquiriesCta = {
   title: "Have questions about your diagnosis?",
   description:
-    "Whether you are evaluating treatment paths, seeking a definitive second surgical opinion, or inquiring on behalf of a family member, our surgical team is prepared to guide you.",
-  // Only claim HIPAA compliance if the request pipeline really meets it
+    "Whether you're weighing treatment options, want a second opinion before surgery or are asking for a family member, a consultation is the place to talk it through.",
   trust: [
-    { label: "Board certified thoracic", icon: BadgeCheck },
-    { label: "HIPAA compliant records", icon: Lock },
+    { label: site.doctor.board, icon: BadgeCheck },
+    { label: "English, Filipino & Ilonggo spoken", icon: Languages },
   ],
   cta: "Schedule a discussion",
 };

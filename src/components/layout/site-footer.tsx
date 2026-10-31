@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { cacheLife } from "next/cache";
 
+import { BookingLink } from "@/components/booking-link";
 import { Container } from "@/components/container";
 import { StatusDot } from "@/components/status-dot";
-import { TextLink, textLinkClassName } from "@/components/text-link";
+import { textLinkClassName } from "@/components/text-link";
 import {
   directionsUrl,
   doctorFullName,
@@ -35,7 +36,10 @@ export async function SiteFooter() {
           <p className="max-w-[28ch] text-balance text-headline-xl-mobile text-foreground md:text-headline-xl">
             {site.statement}
           </p>
-          <TextLink href={site.bookingHref}>Book a consultation</TextLink>
+          <BookingLink className={textLinkClassName}>
+            Book a consultation
+            <span aria-hidden>→</span>
+          </BookingLink>
         </div>
 
         <div className="grid grid-cols-1 gap-8 text-body-sm text-muted-foreground md:grid-cols-[minmax(0,1fr)_auto] md:items-end">

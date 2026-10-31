@@ -2,38 +2,36 @@ import { BadgeCheck, Building2 } from "lucide-react";
 
 import { doctorFullName, site } from "@/config/site";
 
-const years = site.doctor.yearsInPractice;
-
 export const hero = {
   title: "Move freely again,",
   titleContinued: "on the field and off it",
-  description: `${doctorFullName} treats sports injuries, arthritis and bone, joint and muscle problems in ${site.location.locality}, with care planned around getting you back to the activities you love.`,
+  description: `${doctorFullName}, treats sports injuries, arthritis and bone, joint and muscle problems in ${site.location.locality}, with care planned around getting you back to the activities you love.`,
   credentials: [
-    { icon: BadgeCheck, label: "Sports medicine & orthopaedics" },
+    { icon: BadgeCheck, label: site.doctor.board },
     { icon: Building2, label: site.location.name },
   ],
   practice: { label: "Orthopaedic clinic", location: site.location.name },
 };
 
-// Sample figures from the mockups: replace with verified numbers or remove
+// Facts from the CV. Outcome figures (success rates, patient numbers) need a
+// verified source before they go here.
 export const metrics = [
   {
-    value: `${years}+ years`,
-    label: "Surgical mastery",
+    value: "2",
+    label: "Orthopaedic fellowships",
     description:
-      "Leading complex arterial and minimally invasive heart procedures across two decades.",
+      "Sports medicine and minimally invasive surgery at Makati Medical Center, and hip and knee replacement under Dr. Ramon B. Gustilo.",
   },
   {
-    value: "9,000+",
-    label: "Patients handled",
+    value: String(site.hospitals.length),
+    label: "Hospital affiliations",
     description:
-      "Decades of dedicated clinical stewardship, consultation, and precise operative care.",
+      "Orthopaedic consultant at hospitals including Western Visayas Medical Center, The Medical City Iloilo and St. Paul's Hospital Iloilo.",
   },
   {
-    value: "99%",
-    label: "Patient satisfaction",
-    description:
-      "Independently audited clinical outcomes, low complication rates, and earned trust.",
+    value: String(site.doctor.languages.length),
+    label: "Languages spoken",
+    description: "Consultations in English, Filipino or Ilonggo.",
   },
 ];
 
@@ -42,25 +40,25 @@ export const focusIntro =
 
 export const focusAreas = [
   {
-    title: "Minimally invasive valve repair",
+    title: "Sports injuries & arthroscopy",
     description:
-      "Pioneering transcatheter options (TAVR) and keyhole mini-sternotomy protocols designed for shortened hospital stays and rapid return to daily physical mobility.",
-    linkLabel: "Explore technique",
-    href: "/specialties#valve-repair",
+      "Keyhole surgery of the knee, shoulder and ankle for torn ligaments, meniscus and cartilage injuries and unstable joints, when rest and rehabilitation aren't enough.",
+    linkLabel: "Conditions treated",
+    href: "/specialties#sports-medicine",
   },
   {
-    title: "Coronary artery bypass (CABG)",
+    title: "Hip & knee replacement",
     description:
-      "State-of-the-art arterial revascularization utilizing bilateral internal mammary arteries (BIMA) to achieve durable, superior multi-decade patency.",
-    linkLabel: "Operative standards",
-    href: "/specialties#coronary-bypass",
+      "For arthritis that still hurts after medicine, exercise and injections: new joint surfaces to ease the pain and get you walking comfortably again.",
+    linkLabel: "When to consider it",
+    href: "/specialties#joint-replacement",
   },
   {
-    title: "Preventative cardiology",
+    title: "Ultrasound-guided injections",
     description:
-      "Advanced biomarker screening, coronary calcium scoring, and proactive longevity protocols aimed at early vascular intervention long before crises arise.",
-    linkLabel: "Screening protocols",
-    href: "/specialties#preventative-cardiology",
+      "Ultrasound shows the tendon, bursa or joint as the needle goes in, so the medicine reaches the exact spot that needs it.",
+    linkLabel: "How it works",
+    href: "/specialties#ultrasound-guided-injections",
   },
 ];
 
@@ -71,14 +69,8 @@ export type Testimonial = {
   rating: number;
 };
 
-// Testimonials are regulated in some jurisdictions; set to null to hide
-export const featuredTestimonial: Testimonial | null = {
-  quote:
-    "When other surgeons told me open-heart surgery was my only option, Dr. Vance performed a minimally invasive valve repair. I was back walking my dogs in five days.",
-  author: "Arthur M., 62",
-  context: "Minimally invasive mitral annuloplasty, one-year follow-up",
-  rating: 5,
-};
+// Real testimonials only, with the patient's written consent; null hides the section
+export const featuredTestimonial: Testimonial | null = null;
 
 export const consultBanner = {
   title: "Ready to get moving again?",

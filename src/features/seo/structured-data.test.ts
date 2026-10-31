@@ -37,7 +37,7 @@ describe("physicianJsonLd", () => {
         "@type": "Physician",
         "@id": `${ORIGIN}/#physician`,
         url: `${ORIGIN}/`,
-        telephone: "+15550192830",
+        telephone: "+639434977849",
         isAcceptingNewPatients: true,
         address: expect.objectContaining({ "@type": "PostalAddress", postalCode: "5000" }),
       }),
@@ -50,6 +50,9 @@ describe("physicianJsonLd", () => {
         closes: "12:00",
       }),
     ]);
+    expect(data.hospitalAffiliation).toEqual(
+      expect.arrayContaining([{ "@type": "Hospital", name: "Western Visayas Medical Center" }]),
+    );
   });
 
   it("never includes review or rating markup", () => {
@@ -77,10 +80,10 @@ describe("profilePageJsonLd", () => {
   it("links the doctor to the practice, education, credentials and hospitals", () => {
     const data = profilePageJsonLd({
       path: "/about",
-      description: "Cardiothoracic surgeon.",
-      education: [{ name: "Harvard Medical School", type: "CollegeOrUniversity" }],
-      credentials: ["Fellow, American College of Surgeons (FACS)"],
-      affiliations: ["St. Jude Medical Center"],
+      description: "Orthopaedic surgeon.",
+      education: [{ name: "West Visayas State University", type: "CollegeOrUniversity" }],
+      credentials: ["Fellow, Philippine Orthopaedic Association (FPOA)"],
+      affiliations: ["Western Visayas Medical Center"],
     });
 
     expect(data["@type"]).toBe("ProfilePage");
@@ -88,12 +91,14 @@ describe("profilePageJsonLd", () => {
       expect.objectContaining({
         "@type": "Person",
         honorificPrefix: "Dr.",
+        alternateName: "Kris Raymund A. Francisco",
+        knowsLanguage: ["English", "Filipino", "Ilonggo"],
         worksFor: { "@id": `${ORIGIN}/#physician` },
-        alumniOf: [{ "@type": "CollegeOrUniversity", name: "Harvard Medical School" }],
+        alumniOf: [{ "@type": "CollegeOrUniversity", name: "West Visayas State University" }],
         hasCredential: [
-          expect.objectContaining({ name: "Fellow, American College of Surgeons (FACS)" }),
+          expect.objectContaining({ name: "Fellow, Philippine Orthopaedic Association (FPOA)" }),
         ],
-        affiliation: [{ "@type": "Hospital", name: "St. Jude Medical Center" }],
+        affiliation: [{ "@type": "Hospital", name: "Western Visayas Medical Center" }],
       }),
     );
   });
@@ -105,14 +110,14 @@ describe("medicalWebPageJsonLd", () => {
       path: "/specialties",
       name: "Specialties",
       description: "Procedures.",
-      procedures: [{ id: "valve-repair", name: "Valve Repair", description: "Repair." }],
+      procedures: [{ id: "joint-replacement", name: "Hip & knee replacement", description: "Replacement." }],
     });
 
     expect(data.about).toEqual([
       expect.objectContaining({
         "@type": "MedicalProcedure",
-        name: "Valve Repair",
-        url: `${ORIGIN}/specialties#valve-repair`,
+        name: "Hip & knee replacement",
+        url: `${ORIGIN}/specialties#joint-replacement`,
       }),
     ]);
   });

@@ -114,7 +114,7 @@ export function ConsultationForm({ action }: { action: ConsultationFormAction })
           <Input
             {...fieldProps("fullName")}
             autoComplete="name"
-            placeholder="e.g. Kenneth Sterling"
+            placeholder="e.g. Andrea Villanueva"
             required
             className={cn("h-12 pl-11", controlClass)}
           />
@@ -132,7 +132,7 @@ export function ConsultationForm({ action }: { action: ConsultationFormAction })
               {...fieldProps("phone")}
               type="tel"
               autoComplete="tel"
-              placeholder="+1 (555) 000-0000"
+              placeholder="09XX-XXX-XXXX"
               required
               className={cn("h-12 pl-11", controlClass)}
             />
@@ -148,7 +148,7 @@ export function ConsultationForm({ action }: { action: ConsultationFormAction })
               {...fieldProps("email")}
               type="email"
               autoComplete="email"
-              placeholder="kenneth@example.com"
+              placeholder="andrea@example.com"
               required
               className={cn("h-12 pl-11", controlClass)}
             />
@@ -204,7 +204,7 @@ export function ConsultationForm({ action }: { action: ConsultationFormAction })
           {...fieldProps("reason")}
           rows={3}
           maxLength={REASON_MAX_LENGTH}
-          placeholder="Please describe cardiac symptoms, valvular condition, prior bypass records, or required second opinions…"
+          placeholder="e.g. knee pain since a basketball game, a shoulder that keeps slipping out, or a second opinion on surgery…"
           className={cn("min-h-24 resize-none p-4", controlClass)}
         />
         <FieldErrorSlot id="reason-error" message={errors.reason} />

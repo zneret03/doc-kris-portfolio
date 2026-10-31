@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { BookingLink } from "@/components/booking-link";
 import { CtaPanel } from "@/components/cta-panel";
 import { textLinkClassName } from "@/components/text-link";
 import { buttonVariants } from "@/components/ui/button";
@@ -13,9 +12,7 @@ export function ConsultBanner() {
       description={consultBanner.description}
       actions={
         <>
-          <Link href={site.bookingHref} className={buttonVariants({ size: "xl" })}>
-            {consultBanner.cta}
-          </Link>
+          <BookingLink className={buttonVariants({ size: "xl" })}>{consultBanner.cta}</BookingLink>
           <a href={telHref(site.contact.phone)} className={textLinkClassName}>
             <span className="sr-only">Call </span>
             {site.contact.phone.display}

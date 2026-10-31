@@ -5,7 +5,8 @@ import {
 import { consultationForm } from "@/features/clinic/content";
 import { cn } from "@/lib/utils";
 
-// Target of every "Book consultation" link (/clinic#request-consultation)
+// The on-site request form (/clinic#request-consultation). "Book consultation"
+// links go to SeriousMD instead (site.bookingHref).
 export function ConsultationRequestCard({
   action,
   className,

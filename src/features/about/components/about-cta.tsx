@@ -1,4 +1,5 @@
-import { TextLink, textLinkClassName } from "@/components/text-link";
+import { BookingLink } from "@/components/booking-link";
+import { textLinkClassName } from "@/components/text-link";
 import { site, telHref } from "@/config/site";
 import { aboutCta } from "@/features/about/content";
 
@@ -11,9 +12,12 @@ export function AboutCta() {
       </h2>
       <p className="text-body-md leading-relaxed text-muted-foreground">{aboutCta.description}</p>
       <p className="flex flex-wrap items-baseline gap-x-6 gap-y-3">
-        <TextLink href={site.bookingHref}>{aboutCta.cta}</TextLink>
-        <a href={telHref(site.contact.referralPhone)} className={textLinkClassName}>
-          Call {site.contact.referralPhone.display}
+        <BookingLink className={textLinkClassName}>
+          {aboutCta.cta}
+          <span aria-hidden>→</span>
+        </BookingLink>
+        <a href={telHref(site.contact.phone)} className={textLinkClassName}>
+          Call {site.contact.phone.display}
         </a>
       </p>
       <p className="text-body-sm text-muted-foreground">{aboutCta.note}</p>

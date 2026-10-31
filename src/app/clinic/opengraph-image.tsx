@@ -10,6 +10,6 @@ export default function Image() {
   return renderOgImage({
     section: "Clinic & booking",
     title: clinicHeader.title,
-    description: `Request an in-person or video consultation at ${site.location.name}, ${site.location.locality}.`,
+    description: `Book a video consultation online, or visit the clinic at ${site.location.name}, ${site.location.locality}.`,
   });
 }

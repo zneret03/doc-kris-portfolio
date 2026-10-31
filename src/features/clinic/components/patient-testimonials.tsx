@@ -19,7 +19,7 @@ export function PatientTestimonials({
         <h2 id="testimonials-title" className="text-headline-md text-foreground sm:text-headline-lg">
           {testimonialsIntro.title}
         </h2>
-        <p className="text-body-sm text-muted-foreground">{testimonialsIntro.satisfaction}</p>
+        <p className="text-body-sm text-muted-foreground">{testimonialsIntro.note}</p>
       </div>
       <ul className="flex flex-col gap-8">
         {testimonials.map((testimonial) => (

@@ -50,7 +50,7 @@ describe("submitConsultationRequest", () => {
 
     expect(state.status).toBe("error");
     if (state.status !== "error") return;
-    expect(state.message).toContain("+1 (800) 555-0198");
+    expect(state.message).toContain("0943-497-7849");
     expect(state.values.fullName).toBe("Kenneth Sterling");
   });
 

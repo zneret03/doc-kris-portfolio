@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Clock, Lock, Mail, PhoneCall } from "lucide-react";
+import { Lock, Mail, PhoneCall } from "lucide-react";
 
 import { IconTile } from "@/components/icon-tile";
 import { site, telHref } from "@/config/site";
@@ -19,7 +19,7 @@ function ContactLink({
 }) {
   // The email needs the whole row on the narrowest phones: when the row's
   // content box is under 18rem (a 320px screen) the decorative tile steps
-  // aside so the value stays on one line (gate 49).
+  // aside and the value drops a size, so it stays on one line (gate 49).
   return (
     <a
       href={href}
@@ -28,7 +28,7 @@ function ContactLink({
       <IconTile icon={icon} className="hidden @2xs:inline-flex" />
       <span className="min-w-0">
         <span className="block text-body-sm text-muted-foreground">{label}</span>
-        <span className="block text-title-md font-semibold [overflow-wrap:anywhere] text-foreground">
+        <span className="block text-body-md font-semibold [overflow-wrap:anywhere] text-foreground @2xs:text-title-md">
           {value}
         </span>
       </span>
@@ -36,9 +36,9 @@ function ContactLink({
   );
 }
 
-// One layer: the contact rows are the only surfaces; the notes are text.
+// One layer: the contact rows are the only surfaces; the note is text.
 export function AssistancePanel({ className }: { className?: string }) {
-  const { referralPhone, email } = site.contact;
+  const { phone, email } = site.contact;
 
   return (
     <section aria-labelledby="assistance-title" className={cn("flex flex-col gap-6", className)}>
@@ -51,10 +51,10 @@ export function AssistancePanel({ className }: { className?: string }) {
       <ul className="flex flex-col gap-3">
         <li>
           <ContactLink
-            href={telHref(referralPhone)}
+            href={telHref(phone)}
             icon={PhoneCall}
-            label={assistance.referralLabel}
-            value={referralPhone.display}
+            label={assistance.phoneLabel}
+            value={phone.display}
           />
         </li>
         <li>
@@ -66,12 +66,6 @@ export function AssistancePanel({ className }: { className?: string }) {
         <span>
           <span className="text-foreground">{assistance.privacy.title}.</span>{" "}
           {assistance.privacy.description}
-        </span>
-      </p>
-      <p className="flex items-center gap-3 text-body-sm text-muted-foreground">
-        <Clock aria-hidden className="size-4 shrink-0 text-primary" />
-        <span>
-          {assistance.responseLabel} <span className="text-foreground">{assistance.responseValue}</span>
         </span>
       </p>
     </section>
