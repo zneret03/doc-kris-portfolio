@@ -57,7 +57,6 @@ Before pushing, run `yarn lint && yarn typecheck && yarn test && yarn build`.
 | `NEXT_PUBLIC_SITE_URL` | In production | The canonical origin, such as `https://www.example.com`. Canonical URLs, the sitemap, structured data and share images all use it; social networks need it to load the preview image. Falls back to the Vercel production URL, then `http://localhost:3000`. |
 | `CONSULTATION_WEBHOOK_URL` | When the request form is back | Where consultation requests are sent. Without it, the live form tells patients to call instead of pretending the request went through. |
 | `CONSULTATION_WEBHOOK_SECRET` | Optional | Sent as `Authorization: Bearer <secret>` with every request, so the endpoint can reject anything else. |
-| `GOOGLE_SITE_VERIFICATION` | Optional | The `content` value of Google Search Console's HTML-tag verification. Not needed when the domain is verified through DNS. |
 
 ### Booking and consultation requests
 

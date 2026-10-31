@@ -31,10 +31,6 @@ export const metadata: Metadata = {
   category: "health",
   robots: isIndexable() ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false, email: false, address: false },
-  // Google Search Console's HTML-tag check, when the domain isn't verified by DNS
-  ...(process.env.GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
-    : {}),
   openGraph: {
     type: "website",
     siteName: doctorFullName,
